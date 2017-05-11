@@ -1,0 +1,42 @@
+{
+  "ecmaFeatures": {
+    "globalReturn": true,
+    "jsx": true,
+    "modules": true
+  },
+
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+
+  "globals": {
+    "document": false,
+    "escape": false,
+    "navigator": false,
+    "unescape": false,
+    "window": false,
+    "describe": true,
+    "before": true,
+    "it": true,
+    "expect": true,
+    "sinon": true
+  },
+
+  "parser": "babel-eslint",
+
+  "plugins": [
+
+  ],
+
+  "rules": {
+    "indent": 2,
+    "valid-jsdoc": 0,
+    "require-jsdoc": 0,
+    "max-len": [1, 120, 4, {
+      "ignoreComments": true,
+      "ignoreUrls": true
+    }]
+  }
+}

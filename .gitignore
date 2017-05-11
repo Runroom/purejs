@@ -1,0 +1,12 @@
+# OS GENERATED FILES
+.DS_Store
+.DS_Store?
+
+# EDITOR
+.vscode
+
+# NODE
+dist
+node_modules
+npm-debug.log
+yarn-error.log

@@ -1,0 +1,36 @@
+{
+  "name": "runroom-utility-kit",
+  "version": "1.0.0",
+  "description": "Runroom utility kit is a pack of no-jquery javascript starter resources that can be extended using npm packages",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --env build",
+    "dev": "webpack --progress --colors --watch --env dev",
+    "test": "mocha --compilers js:babel-core/register --colors ./test/*.spec.js",
+    "test:watch": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js"
+  },
+  "author": "Italo Devoto Ramella <italodr@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "runroom",
+    "webpack",
+    "es6",
+    "starter",
+    "library"
+  ],
+  "devDependencies": {
+    "babel-cli": "6.24.1",
+    "babel-core": "6.24.1",
+    "babel-eslint": "7.2.3",
+    "babel-loader": "7.0.0",
+    "babel-plugin-add-module-exports": "0.2.1",
+    "babel-preset-es2015": "6.24.1",
+    "chai": "3.5.0",
+    "eslint": "3.19.0",
+    "eslint-loader": "1.7.1",
+    "js-cookie": "2.1.4",
+    "mocha": "3.3.0",
+    "webpack": "2.5.1",
+    "yargs": "8.0.1"
+  }
+}
