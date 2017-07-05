@@ -1,45 +1,46 @@
 import ForEach from './ForEach';
 
-function Anchor() {
-    let opts = {
-        trigger: '.js-anchor',
-        offset: 0
-    };
+let opts = {
+  trigger: '.js-anchor',
+  scrollUpClass: 'scroll-up',
+  scrollDownClass: 'scroll-down',
+  offset: 0
+};
 
-    function scrollToAnchor() {
-        let element = document.querySelector(location.hash);
-        window.scrollTo(0, element.offsetTop - opts.offset);
-    }
-
-    function extend(settings) {
-        opts = Object.assign({}, opts, settings);
-    }
-
-    function bindUIActions(settings) {
-        if (settings) extend(settings);
-
-        if (location.hash !== '') {
-            scrollToAnchor();
-
-            setTimeout(function() {
-                document.documentElement.classList.remove('scroll-up');
-                document.documentElement.classList.add('scroll-down');
-            }, 1);
-        }
-
-        let triggers = document.querySelectorAll(opts.trigger);
-        ForEach(triggers, function(index, value) {
-            triggers[index].addEventListener('click', function(event) {
-                event.preventDefault();
-                location.hash = triggers[index].getAttribute('href');
-                scrollToAnchor();
-            });
-        });
-    }
-
-    return {
-        init: bindUIActions
-    }
+function scrollToAnchor() {
+  const element = document.querySelector(location.hash);
+  window.scrollTo(0, element.offsetTop - opts.offset);
 }
 
-export default Anchor();
+function handleExtend(settings) {
+  opts = Object.assign({}, opts, settings);
+}
+
+export function handleScrollToAnchor(hash) {
+  location.hash = hash;
+  scrollToAnchor();
+}
+
+export default function Anchor(settings) {
+  if (settings) {
+    handleExtend(settings);
+  }
+
+  if (location.hash !== '') {
+    scrollToAnchor();
+
+    setTimeout(() => {
+      document.documentElement.classList.remove(opts.scrollUpClass);
+      document.documentElement.classList.add(opts.scrollDownClass);
+    }, 1);
+  }
+
+  const triggers = document.querySelectorAll(opts.trigger);
+  ForEach(triggers, index => {
+    triggers[index].addEventListener('click', event => {
+      event.preventDefault();
+      location.hash = triggers[index].getAttribute('href');
+      scrollToAnchor();
+    });
+  });
+}

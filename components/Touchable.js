@@ -1,7 +1,6 @@
 export default function Touchable() {
-    let touchsupport = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
-
-    if (!touchsupport) {
-        document.documentElement.classList.add('non-touch');
-    }
-};
+  const touchsupport =
+    'ontouchstart' in window || window.navigator.maxTouchPoints > 0 || window.navigator.msMaxTouchPoints > 0;
+  const touchClass = touchsupport ? 'touch' : 'non-touch';
+  document.documentElement.classList.add(touchClass);
+}

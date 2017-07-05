@@ -1,10 +1,13 @@
-'use strict';
-
-import { Anchor, Cookies, Touchable } from '../index';
+import { Anchor, Cookies, Touchable, handleScrollToAnchor } from '../index';
 
 Touchable();
 
-document.addEventListener("DOMContentLoaded", function(event) {
-    Anchor.init({ offset: 56 });
-    Cookies.init({ padding_bottom: true });
+document.addEventListener('DOMContentLoaded', () => {
+  Anchor({ offset: 56 });
+  Cookies({ paddingBottom: true });
+
+  document.querySelector('.section4').addEventListener('click', event => {
+    event.preventDefault();
+    handleScrollToAnchor('#Section4');
+  });
 });
