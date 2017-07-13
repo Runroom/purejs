@@ -3,13 +3,31 @@
 
 <head>
     <title>Libraries test</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'PT Sans', sans-serif;
+            font-size: 18px;
+        }
+
         header {
             align-items: center;
             background: rebeccapurple;
             display: flex;
             height: 56px;
             left: 0;
+            padding: 0 10px;
             position: fixed;
             top: 0;
             width: 100%;
@@ -21,28 +39,39 @@
         }
 
         main {
-            padding: 56px 0 0;
+            padding: 56px 20px 0;
         }
 
-        .Cookies {
+        .cookies {
+            align-items: center;
             background: hsla(0, 100%, 0%, .8);
             bottom: 0;
             color: #fff;
-            display: block;
-            font-size: 14px;
+            display: flex;
             left: 0;
             line-height: 1.5;
             opacity: 0;
-            padding: 28px 0;
+            padding: 28px 20px;
             position: fixed;
             transition: opacity .3s ease-in-out;
             width: 100%;
             z-index: -2;
         }
 
-        .Cookies.is-visible {
+        .cookies--state-visible {
             opacity: 1;
             z-index: 14;
+        }
+
+        .cookies__button {
+            background: peru;
+            color: white;
+            flex: 0 0 100px;
+            line-height: 1;
+            margin: 0 0 0 10px;
+            padding: 16px 24px;
+            text-align: center;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -55,7 +84,7 @@
         <a href="" class="section4">Section 4</a>
     </header>
     <main>
-        <h1>Runroom utility kit</h1>
+        <h1>Pure js</h1>
         <h2>Seventeen thousand!</h2>
         <p>Those guys must really be desperate. This could really save my neck. Get back to the ship and get her ready. You'll
             have to sell your speeder. That's okay. I'm never coming back to this planet again. Going somewhere, Solo? Yes,
@@ -246,10 +275,10 @@
     <footer>
 
     </footer>
-    <div class="Cookies js-cookies">
-        <p>Obi-Wan Kenobi...Obi-Wan? Now thats a name I haven't heard in a long time...a long time. I think my uncle knew him.
-            He said he was dead. Oh, he's not dead, not...not yet.</p>
-        <a class="Cookies-button js-cookiesAccept" href="#">Acepto</a>
+    <div class="cookies js-cookies">
+        <p>This site uses cookies to offer you a better browsing experience. By continuing to use the site you agree to our
+            use of cookies. You can change settings and read more about our cookies policy</p>
+        <a class="cookies__button js-cookiesAccept" href="#">Accept</a>
     </div>
 
     <script src="library.js"></script>

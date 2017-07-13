@@ -1,15 +1,24 @@
 import ForEach from './ForEach';
+import { getConfig as scrollDirectionConfig } from './ScrollDirection';
 
 let opts = {
   trigger: '.js-anchor',
-  scrollUpClass: 'scroll-up',
-  scrollDownClass: 'scroll-down',
+  scrollDirection: false,
   offset: 0
 };
 
 function scrollToAnchor() {
   const element = document.querySelector(location.hash);
   window.scrollTo(0, element.offsetTop - opts.offset);
+}
+
+function handleScrollDirectionChange() {
+  const scrollOpts = scrollDirectionConfig();
+
+  setTimeout(() => {
+    document.documentElement.classList.remove(scrollOpts.classUp);
+    document.documentElement.classList.add(scrollOpts.classDown);
+  }, 1);
 }
 
 function handleExtend(settings) {
@@ -29,10 +38,9 @@ export default function Anchor(settings) {
   if (location.hash !== '') {
     scrollToAnchor();
 
-    setTimeout(() => {
-      document.documentElement.classList.remove(opts.scrollUpClass);
-      document.documentElement.classList.add(opts.scrollDownClass);
-    }, 1);
+    if (opts.scrollDirection) {
+      handleScrollDirectionChange();
+    }
   }
 
   const triggers = document.querySelectorAll(opts.trigger);

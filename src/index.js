@@ -1,8 +1,9 @@
-import { Anchor, Cookies, Touchable, handleScrollToAnchor } from '../index';
+import { Anchor, ScrollDirection, Cookies, Touchable, handleScrollToAnchor } from '../index';
 
 Touchable();
 
 document.addEventListener('DOMContentLoaded', () => {
+  ScrollDirection({ classUp: 'new-scroll-up' });
   Anchor({ offset: 56 });
   Cookies({ paddingBottom: true });
 

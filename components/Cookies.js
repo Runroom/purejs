@@ -4,7 +4,7 @@ let opts = {
   element: '.js-cookies',
   button: '.js-cookiesAccept',
   cookie: 'accept_cookies',
-  visible: 'is-visible',
+  visibleClass: 'cookies--state-visible',
   paddingBottom: false
 };
 
@@ -32,13 +32,13 @@ export default function Cookies(settings) {
 
   if (accepted === undefined) {
     if (opts.paddingBottom) addPaddingToPage();
-    document.querySelector(opts.element).classList.add(opts.visible);
+    document.querySelector(opts.element).classList.add(opts.visibleClass);
   }
 
   document.querySelector(opts.button).addEventListener('click', event => {
     event.preventDefault();
     jsCookies.set(opts.cookie, 'true', { expires: 365 });
-    document.querySelector(opts.element).classList.remove(opts.visible);
+    document.querySelector(opts.element).classList.remove(opts.visibleClass);
     if (opts.paddingBottom) cleanPaddingToPage();
   });
 
