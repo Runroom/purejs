@@ -1,15 +1,15 @@
-# Runroom Utility Kit
+# Pure JS
 
 > Work in progress
 
-Runroom utility kit is a pack of non-jquery javascript modules that can be extended using NPM
+Pure JS is a _work in progress_ pack of non-jquery javascript modules that can be extended using **npm**
 
 To install use either
 
 ```
-$ yarn add runroom-utility-kit --dev
+$ yarn add pure-js --dev
 
-$ npm install --dev runroom-utility-kit
+$ npm install --dev pure-js
 ```
 
 ## List of modules
@@ -29,8 +29,22 @@ Default setting values:
 Usage:
 
 ```
-import { Anchor } from 'runroom-utility-kit';
+import { Anchor } from 'pure-js';
 
 var settings = {...};
 Anchor.init(settings);
 ```
+
+### Cookies 🍪
+
+### ForEach ☔️
+
+### GoTop 🔝
+
+### ScrollDirection ⬆⬇
+
+### ScrollTo 🚀
+
+### ScrollTop 🙊
+
+### Touchable 👆🏽
