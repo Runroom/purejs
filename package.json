@@ -1,6 +1,6 @@
 {
   "name": "pure-js",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Pure js is a pack of no-jquery javascript starter resources that can be extended using modules",
   "scripts": {
     "build": "webpack --env build",
