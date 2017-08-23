@@ -2,22 +2,21 @@
   "name": "pure-js",
   "version": "0.1.0",
   "description": "Pure js is a pack of no-jquery javascript starter resources that can be extended using modules",
-  "main": "index.js",
   "scripts": {
     "build": "webpack --env build",
-    "dev": "webpack --progress --colors --watch --env dev",
     "test": "mocha --compilers js:babel-core/register --colors ./test/*.spec.js",
     "test:watch": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
     "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"components/**/*.{js}\""
   },
   "author": "Italo Devoto Ramella <italodr@gmail.com>",
   "license": "MIT",
-  "keywords": [
-    "webpack",
-    "es6",
-    "starter",
-    "library"
-  ],
+  "keywords": ["es6", "starter", "library", "function"],
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "dependencies": {
+    "js-cookie": "2.1.4"
+  },
   "devDependencies": {
     "babel-cli": "6.24.1",
     "babel-core": "6.24.1",
@@ -37,7 +36,6 @@
     "eslint-plugin-jsx-a11y": "5.0.3",
     "eslint-plugin-prettier": "2.1.1",
     "eslint-plugin-react": "7.0.1",
-    "js-cookie": "2.1.4",
     "mocha": "3.3.0",
     "webpack": "2.5.1",
     "yargs": "8.0.1"
