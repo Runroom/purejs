@@ -10,3 +10,6 @@ dist
 node_modules
 npm-debug.log
 yarn-error.log
+
+# NPM
+pure-js*.tgz
