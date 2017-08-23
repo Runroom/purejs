@@ -13,12 +13,14 @@ module.exports = {
       globalReturn: true
     }
   },
+  parser: 'babel-eslint',
   globals: {
     document: false,
     escape: false,
     navigator: false,
     unescape: false,
     window: false,
+    location: false,
     describe: true,
     before: true,
     it: true,

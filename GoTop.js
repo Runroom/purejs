@@ -6,20 +6,6 @@ const maxScrollTop = pageHeight * scrollOffset;
 
 let scrollIsVisible = false;
 
-function handleScrollTopVisibility() {
-  if (window.scrollY >= maxScrollTop) {
-    if (!scrollIsVisible) {
-      createScrollTop();
-      scrollIsVisible = true;
-    }
-  } else {
-    if (scrollIsVisible) {
-      document.querySelector('.js-scrollTop').remove();
-      scrollIsVisible = false;
-    }
-  }
-}
-
 function createScrollTop() {
   const styles = {
     background: 'rgba(0, 0, 0, .5)',
@@ -44,7 +30,7 @@ function createScrollTop() {
   Object.assign(element.style, styles);
   element.innerHTML = content;
 
-  element.addEventListener('click', function(event) {
+  element.addEventListener('click', event => {
     event.preventDefault();
     ScrollTo(0);
   });
@@ -52,14 +38,17 @@ function createScrollTop() {
   document.body.appendChild(element);
 }
 
-function handleExtend(settings) {
-  opts = Object.assign({}, opts, settings);
+function handleScrollTopVisibility() {
+  if (window.scrollY >= maxScrollTop && !scrollIsVisible) {
+    createScrollTop();
+    scrollIsVisible = true;
+  } else if (scrollIsVisible) {
+    document.querySelector('.js-scrollTop').remove();
+    scrollIsVisible = false;
+  }
 }
 
-export default function GoTop(settings) {
-  if (settings) {
-    handleExtend(settings);
-  }
+export default function GoTop() {
   handleScrollTopVisibility();
   window.addEventListener('scroll', handleScrollTopVisibility);
 }

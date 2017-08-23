@@ -3,20 +3,15 @@
   "version": "0.2.2",
   "description": "Pure js is a pack of no-jquery javascript starter resources that can be extended using modules",
   "scripts": {
-    "build": "",
+    "build": "webpack --env build",
     "test": "mocha --compilers js:babel-core/register --colors ./test/*.spec.js",
     "test:watch": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
     "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"components/**/*.{js}\""
   },
   "author": "Italo Devoto Ramella <italodr@gmail.com>",
   "license": "MIT",
-  "keywords": [
-    "es6",
-    "starter",
-    "library",
-    "function"
-  ],
-  "main": "index.js",
+  "keywords": ["es6", "starter", "library", "function"],
+  "main": "lib/pure-js.min.js",
   "engines": {
     "node": ">=6.0.0"
   },

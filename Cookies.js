@@ -1,4 +1,4 @@
-import jsCookies from 'js-cookie';
+import jsCookies from './node_modules/js-cookie';
 
 let opts = {
   element: '.js-cookies',
