@@ -1,6 +1,6 @@
 {
   "name": "pure-js",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Pure js is a pack of no-jquery javascript starter resources that can be extended using modules",
   "scripts": {
     "build": "webpack --env build",
@@ -14,7 +14,12 @@
     "url": "git@github.com:italodr/pure-js.git"
   },
   "license": "MIT",
-  "keywords": ["es6", "starter", "library", "function"],
+  "keywords": [
+    "es6",
+    "starter",
+    "library",
+    "function"
+  ],
   "main": "lib/pure-js.min.js",
   "engines": {
     "node": ">=6.0.0"
