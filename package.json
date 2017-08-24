@@ -9,13 +9,12 @@
     "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"components/**/*.{js}\""
   },
   "author": "Italo Devoto Ramella <italodr@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:italodr/pure-js.git"
+  },
   "license": "MIT",
-  "keywords": [
-    "es6",
-    "starter",
-    "library",
-    "function"
-  ],
+  "keywords": ["es6", "starter", "library", "function"],
   "main": "lib/pure-js.min.js",
   "engines": {
     "node": ">=6.0.0"
