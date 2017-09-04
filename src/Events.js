@@ -1,6 +1,11 @@
+let timer;
+let windowWidth = window.innerWidth;
+
 // see: http://youmightnotneedjquery.com/#ready
 function onDocumentReady(fn) {
-  const ready = document.attachEvent ? document.readyState === 'complete' : document.readyState !== 'loading';
+  const complete = document.readyState === 'complete';
+  const notLoading = document.readyState !== 'loading';
+  const ready = document.attachEvent ? complete : notLoading;
   if (ready) {
     fn();
   } else {
@@ -8,8 +13,19 @@ function onDocumentReady(fn) {
   }
 }
 
+function onResize(fn) {
+  window.addEventListener('resize', function() {
+    if (windowWidth !== window.innerWidth) {
+      windowWidth = window.innerWidth;
+      timer && clearTimeout(timer);
+      timer = setTimeout(fn, 100);
+    }
+  });
+}
+
 const Events = {
-  onDocumentReady
+  onDocumentReady,
+  onResize
 };
 
 export default Events;
