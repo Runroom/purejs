@@ -14,10 +14,12 @@ function onDocumentReady(fn) {
 }
 
 function onResize(fn) {
-  window.addEventListener('resize', function() {
+  window.addEventListener('resize', () => {
     if (windowWidth !== window.innerWidth) {
       windowWidth = window.innerWidth;
-      timer && clearTimeout(timer);
+      if (timer) {
+        clearTimeout(timer);
+      }
       timer = setTimeout(fn, 100);
     }
   });

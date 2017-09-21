@@ -4,17 +4,16 @@
   "description": "Pure js is a pack of no-jquery javascript starter resources that can be extended using modules",
   "scripts": {
     "build": "webpack --env build",
-    "test": "mocha --compilers js:babel-core/register --colors ./test/*.spec.js",
-    "test:watch": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
-    "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"components/**/*.{js}\""
+    "test": "tape -r babel-register ./test/*.js | tap-spec"
   },
   "author": "Italo Devoto Ramella <italodr@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git@github.com:italodr/pure-js.git"
+    "url": "git@github.com:Runroom/pure-js.git"
   },
   "license": "MIT",
   "keywords": [
+    "runroom",
     "es6",
     "starter",
     "library",
@@ -33,8 +32,8 @@
     "babel-eslint": "7.2.3",
     "babel-loader": "7.0.0",
     "babel-plugin-add-module-exports": "0.2.1",
+    "babel-preset-env": "^1.6.0",
     "babel-preset-es2015": "6.24.1",
-    "chai": "3.5.0",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "15.0.1",
     "eslint-config-prettier": "2.1.1",
@@ -46,7 +45,8 @@
     "eslint-plugin-jsx-a11y": "5.0.3",
     "eslint-plugin-prettier": "2.1.1",
     "eslint-plugin-react": "7.0.1",
-    "mocha": "3.3.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.8.0",
     "webpack": "2.5.1",
     "yargs": "8.0.1"
   }
