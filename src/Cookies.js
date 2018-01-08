@@ -1,4 +1,5 @@
 import jsCookies from '../node_modules/js-cookie';
+import Events from './Events';
 
 let opts = {
   element: '.js-cookies',
@@ -23,12 +24,14 @@ function cleanPaddingToPage() {
   document.documentElement.style.paddingBottom = 0;
 }
 
+export const cookiesIsAvailable = () => jsCookies.get(opts.cookieName);
+
 export default function Cookies(settings) {
   if (settings) {
     handleExtend(settings);
   }
 
-  const accepted = jsCookies.get(opts.cookieName);
+  const accepted = cookiesIsAvailable();
 
   if (accepted === undefined) {
     if (opts.paddingBottom) addPaddingToPage();
@@ -42,5 +45,5 @@ export default function Cookies(settings) {
     if (opts.paddingBottom) cleanPaddingToPage();
   });
 
-  window.addEventListener('resize', addPaddingToPage, false);
+  Events.onResize(addPaddingToPage);
 }

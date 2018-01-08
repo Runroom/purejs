@@ -1,6 +1,3 @@
-let timer;
-let windowWidth = window.innerWidth;
-
 // see: http://youmightnotneedjquery.com/#ready
 function onDocumentReady(fn) {
   const complete = document.readyState === 'complete';
@@ -14,6 +11,9 @@ function onDocumentReady(fn) {
 }
 
 function onResize(fn) {
+  let timer;
+  let windowWidth = window.innerWidth;
+
   window.addEventListener('resize', () => {
     if (windowWidth !== window.innerWidth) {
       windowWidth = window.innerWidth;
