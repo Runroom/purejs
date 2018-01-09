@@ -1,12 +1,54 @@
+import Debounce from './Debounce';
 import ScrollTo from './ScrollTo';
 
 const pageHeight = document.body.clientHeight;
-const scrollOffset = 0.25;
-const maxScrollTop = pageHeight * scrollOffset;
+let maxScrollTop = pageHeight * 0.25;
 
 let scrollIsVisible = false;
 
-function createScrollTop() {
+let opts = {
+  elementClass: 'js-scrollTop',
+  hiddenClass: null,
+  createElement: true,
+  scrollOffset: 0.25
+};
+
+function handleExtend(settings) {
+  opts = Object.assign({}, opts, settings);
+  maxScrollTop = pageHeight * opts.scrollOffset;
+}
+
+function handleScrollTopVisibility() {
+  if (window.scrollY >= maxScrollTop && !scrollIsVisible) {
+    if (opts.hiddenClass) {
+      document.querySelector(`.${opts.elementClass}`).classList.remove(opts.hiddenClass);
+    } else {
+      document.querySelector(`.${opts.elementClass}`).style.display = 'block';
+    }
+    scrollIsVisible = true;
+  } else if (scrollIsVisible) {
+    if (opts.hiddenClass) {
+      document.querySelector(`.${opts.elementClass}`).classList.add(opts.hiddenClass);
+    } else {
+      document.querySelector(`.${opts.elementClass}`).style.display = 'none';
+    }
+    scrollIsVisible = false;
+  }
+}
+
+export default function GoTop(settings) {
+  if (settings) {
+    handleExtend(settings);
+  }
+
+  if (opts.createElement) createScrollTop();
+  handleScrollTopVisibility();
+  window.addEventListener('scroll', () => {
+    Debounce(handleScrollTopVisibility);
+  });
+}
+
+export function createScrollTop() {
   const styles = {
     background: 'rgba(0, 0, 0, .5)',
     border: '0',
@@ -26,7 +68,7 @@ function createScrollTop() {
 
   const element = document.createElement('a');
 
-  element.className = 'js-scrollTop';
+  element.className = opts.elementClass;
   Object.assign(element.style, styles);
   element.innerHTML = content;
 
@@ -36,19 +78,4 @@ function createScrollTop() {
   });
 
   document.body.appendChild(element);
-}
-
-function handleScrollTopVisibility() {
-  if (window.scrollY >= maxScrollTop && !scrollIsVisible) {
-    createScrollTop();
-    scrollIsVisible = true;
-  } else if (scrollIsVisible) {
-    document.querySelector('.js-scrollTop').remove();
-    scrollIsVisible = false;
-  }
-}
-
-export default function GoTop() {
-  handleScrollTopVisibility();
-  window.addEventListener('scroll', handleScrollTopVisibility);
 }

@@ -41,10 +41,7 @@
     "eslint-plugin-prettier": "2.1.1",
     "eslint-plugin-react": "7.0.1",
     "jest": "22.0.4",
-    "jsdom": "11.5.1",
     "regenerator-runtime": "^0.11.1",
-    "tap-spec": "4.1.1",
-    "tape": "4.8.0",
     "webpack": "2.5.1",
     "yargs": "8.0.1"
   },
@@ -57,6 +54,7 @@
       "NODE_ENV": "test"
     },
     "moduleFileExtensions": ["js"],
-    "moduleDirectories": ["node_modules"]
+    "moduleDirectories": ["node_modules"],
+    "verbose": true
   }
 }
