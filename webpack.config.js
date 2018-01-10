@@ -6,21 +6,21 @@ const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const libraryName = 'pure-js';
 const plugins = [];
 
-let outputFile;
+let suffix = '';
 
 if (env === 'build') {
-  plugins.push(new UglifyJsPlugin({ minimize: true }));
-  outputFile = `${libraryName}.min.js`;
-} else {
-  outputFile = `${libraryName}.js`;
+  // plugins.push(new UglifyJsPlugin({ minimize: true, mangle: false }));
+  suffix = '.min';
 }
 
 const config = {
-  entry: `${__dirname}/index.js`,
+  entry: {
+    purejs: `${__dirname}/index.js`
+  },
   devtool: 'source-map',
   output: {
     path: `${__dirname}/lib`,
-    filename: outputFile,
+    filename: `[name]${suffix}.js`,
     library: libraryName,
     libraryTarget: 'umd',
     umdNamedDefine: true
@@ -30,7 +30,7 @@ const config = {
       {
         test: /(\.jsx|\.js)$/,
         loader: 'babel-loader',
-        exclude: /(node_modules|bower_components)/
+        exclude: /(node_modules)/
       },
       {
         test: /(\.jsx|\.js)$/,

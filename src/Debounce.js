@@ -4,11 +4,10 @@
 // leading edge, instead of the trailing.
 export default function debounce(func, wait = 100, immediate) {
   let timeout;
-  return function() {
+  return function debounceFn(...args) {
     const context = this;
-    const args = arguments;
 
-    const later = function() {
+    const later = () => {
       timeout = null;
       if (!immediate) func.apply(context, args);
     };

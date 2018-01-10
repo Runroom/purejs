@@ -36,18 +36,6 @@ function handleScrollTopVisibility() {
   }
 }
 
-export default function GoTop(settings) {
-  if (settings) {
-    handleExtend(settings);
-  }
-
-  if (opts.createElement) createScrollTop();
-  handleScrollTopVisibility();
-  window.addEventListener('scroll', () => {
-    Debounce(handleScrollTopVisibility);
-  });
-}
-
 export function createScrollTop() {
   const styles = {
     background: 'rgba(0, 0, 0, .5)',
@@ -78,4 +66,16 @@ export function createScrollTop() {
   });
 
   document.body.appendChild(element);
+}
+
+export default function GoTop(settings) {
+  if (settings) {
+    handleExtend(settings);
+  }
+
+  if (opts.createElement) createScrollTop();
+  handleScrollTopVisibility();
+  window.addEventListener('scroll', () => {
+    Debounce(handleScrollTopVisibility);
+  });
 }

@@ -7,4 +7,15 @@ import ScrollTo from './src/ScrollTo';
 import ScrollTop from './src/ScrollTop';
 import Touchable from './src/Touchable';
 
-export { Anchor, scrollToAnchor, Cookies, Events, GoTop, ScrollDirection, ScrollTo, ScrollTop, Touchable };
+export {
+  Anchor,
+  scrollToAnchor,
+  Cookies,
+  getPolicyCookie,
+  Events,
+  GoTop,
+  ScrollDirection,
+  ScrollTo,
+  ScrollTop,
+  Touchable
+};
