@@ -7,12 +7,12 @@ module.exports = function(config) {
   config.set({
     basePath: '',
     frameworks: ['mocha', 'chai'],
-    files: ['lib/purejs.min.js', 'tests/**/*.spec.js'],
+    files: ['lib/purejs.min.js', 'lib/tests.min.js'],
     // files: ['lib/tests.min.js'],
     exclude: ['**/_*.js'],
     preprocessors: {
-      'src/**/*.js': ['coverage'],
-      'tests/**/*.spec.js': ['babel']
+      'src/**/*.js': ['coverage']
+      // 'tests/**/*.spec.js': ['babel']
       // 'template.html': ['html2js']
     },
     webpack: webpackConfig,

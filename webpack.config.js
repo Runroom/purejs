@@ -15,7 +15,8 @@ if (env === 'build') {
 
 const config = {
   entry: {
-    purejs: `${__dirname}/index.js`
+    purejs: `${__dirname}/index.js`,
+    tests: [`${__dirname}/tests/Anchor.spec.js`, `${__dirname}/tests/ForEach.spec.js`]
   },
   devtool: 'source-map',
   output: {

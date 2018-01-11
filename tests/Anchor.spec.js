@@ -1,5 +1,9 @@
 // import { beforeEach, afterEach } from 'mocha';
-import Anchor from 'Anchor';
+// import Anchor from 'Anchor';
+
+// before(() => {
+//   var Anchor = require('../src/Anchor');
+// });
 
 beforeEach(() => {
   const fixture = '<div class="foo"></div>';
