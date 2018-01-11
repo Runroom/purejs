@@ -13,3 +13,4 @@ yarn-error.log
 
 # NPM
 pure-js*.tgz
+build/coverage/

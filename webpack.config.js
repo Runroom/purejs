@@ -3,7 +3,7 @@ const path = require('path');
 const env = require('yargs').argv.env; // use --env with webpack 2
 
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-const libraryName = 'pure-js';
+const libraryName = 'purejs';
 const plugins = [];
 
 let suffix = '';
@@ -15,8 +15,7 @@ if (env === 'build') {
 
 const config = {
   entry: {
-    purejs: `${__dirname}/index.js`,
-    tests: [`${__dirname}/tests/Anchor.spec.js`, `${__dirname}/tests/ForEach.spec.js`]
+    purejs: `${__dirname}/index.js`
   },
   devtool: 'source-map',
   output: {

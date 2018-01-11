@@ -25,6 +25,7 @@ function cleanPaddingToPage() {
 }
 
 export const getPolicyCookie = () => jsCookies.get(opts.cookieName);
+export const removePolicyCookie = () => jsCookies.remove(opts.cookieName);
 
 export default function Cookies(settings) {
   if (settings) {

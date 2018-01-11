@@ -13,14 +13,14 @@ function handleExtend(settings) {
 }
 
 export function scrollToAnchor(hash) {
-  if (hash) location.hash = hash;
-  const element = document.querySelector(location.hash);
+  if (hash) document.location.hash = hash;
+  const element = document.querySelector(document.location.hash);
   window.scrollTo(0, element.offsetTop - opts.offsetTop);
 }
 
 export default function Anchor(settings) {
   if (settings) handleExtend(settings);
-  if (location.hash) scrollToAnchor();
+  if (document.location.hash) scrollToAnchor();
 
   const triggers = document.querySelectorAll(`.${opts.trigger}`);
   ForEach(triggers, index => {

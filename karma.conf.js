@@ -1,21 +1,16 @@
 // Karma configuration
 // Generated on Wed Jan 10 2018 09:56:25 GMT+0100 (CET)
-// var webpack = require('webpack');
-var webpackConfig = require('./webpack.config.js');
 
 module.exports = function(config) {
   config.set({
     basePath: '',
     frameworks: ['mocha', 'chai'],
-    files: ['lib/purejs.min.js', 'lib/tests.min.js'],
-    // files: ['lib/tests.min.js'],
+    files: ['lib/purejs.min.js', 'tests/**/*.spec.js'],
     exclude: ['**/_*.js'],
     preprocessors: {
-      'src/**/*.js': ['coverage']
-      // 'tests/**/*.spec.js': ['babel']
-      // 'template.html': ['html2js']
+      'lib/purejs.min.js': ['coverage'],
+      'tests/**/*.spec.js': ['babel']
     },
-    webpack: webpackConfig,
     babelPreprocessor: {
       options: { presets: ['env'], sourceMap: 'inline' },
       filename: function(file) {
@@ -31,8 +26,7 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_ERROR,
     autoWatch: true,
-    customLaunchers: { PhantomJS_custom: { base: 'PhantomJS', debug: true } },
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
     singleRun: false,
     concurrency: Infinity,
     plugins: [
@@ -41,11 +35,8 @@ module.exports = function(config) {
       require('karma-chai'),
       require('karma-chrome-launcher'),
       require('karma-coverage'),
-      require('karma-html2js-preprocessor'),
       require('karma-mocha'),
-      require('karma-mocha-reporter'),
-      require('karma-phantomjs-launcher'),
-      require('karma-webpack')
+      require('karma-mocha-reporter')
     ]
   });
 };

@@ -1,6 +1,7 @@
 import Anchor, { scrollToAnchor } from './src/Anchor';
-import Cookies, { getPolicyCookie } from './src/Cookies';
+import Cookies, { getPolicyCookie, removePolicyCookie } from './src/Cookies';
 import Events from './src/Events';
+import ForEach from './src/ForEach';
 import GoTop from './src/GoTop';
 import ScrollDirection from './src/ScrollDirection';
 import ScrollTo from './src/ScrollTo';
@@ -12,7 +13,9 @@ export {
   scrollToAnchor,
   Cookies,
   getPolicyCookie,
+  removePolicyCookie,
   Events,
+  ForEach,
   GoTop,
   ScrollDirection,
   ScrollTo,
