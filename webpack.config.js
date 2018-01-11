@@ -9,7 +9,7 @@ const plugins = [];
 let suffix = '';
 
 if (env === 'build') {
-  // plugins.push(new UglifyJsPlugin({ minimize: true, mangle: false }));
+  plugins.push(new UglifyJsPlugin({ minimize: true }));
   suffix = '.min';
 }
 
@@ -43,7 +43,7 @@ const config = {
     modules: ['node_modules']
   },
   resolve: {
-    modules: [path.resolve('./src')],
+    modules: [path.resolve('./src'), 'node_modules'],
     extensions: ['.json', '.js']
   },
   plugins
