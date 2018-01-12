@@ -1,11 +1,20 @@
 describe('Debounce behavior', () => {
-  // const triggerMe = () => {};
-  // var spy = chai.spy(triggerMe);
-  // it('function should be called', () => {
-  //   purejs.debounce(triggerMe, 200);
-  //   expect(spy).not.to.have.been.called();
-  //   setTimeout(() => {
-  //     expect(spy).to.have.been.called();
-  //   }, 200);
-  // });
+  it('function should be called after 200ms', done => {
+    const foo = {
+      bar: () => {
+        console.log('trigger');
+      }
+    };
+    const testFunction = () => {
+      foo.bar('baz');
+    };
+
+    sinon.spy(foo, 'bar');
+    purejs.debounce(testFunction, 200);
+
+    setTimeout(() => {
+      foo.bar.should.have.been.calledWith('baz');
+      done();
+    }, 200);
+  });
 });

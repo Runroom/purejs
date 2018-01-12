@@ -15,7 +15,7 @@ function handleExtend(settings) {
 
 function addPaddingToPage() {
   const element = document.querySelector(`.${opts.element}`);
-  const elementHeight = element.offsetHeight;
+  const elementHeight = element ? element.offsetHeight : 0;
 
   document.documentElement.style.paddingBottom = `${elementHeight}px`;
 }
