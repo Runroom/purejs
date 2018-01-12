@@ -1,4 +1,4 @@
-export default function ScrollTo(startPoint, duration = 500) {
+export default function scrollTo(startPoint, duration = 500) {
   const start = document.body.scrollTop;
   const change = startPoint - start;
   const increment = 20;

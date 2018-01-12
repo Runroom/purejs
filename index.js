@@ -1,24 +1,26 @@
-import Anchor, { scrollToAnchor } from './src/Anchor';
-import Cookies, { getPolicyCookie, removePolicyCookie } from './src/Cookies';
-import Events from './src/Events';
-import ForEach from './src/ForEach';
-import GoTop from './src/GoTop';
-import ScrollDirection from './src/ScrollDirection';
-import ScrollTo from './src/ScrollTo';
-import ScrollTop from './src/ScrollTop';
-import Touchable from './src/Touchable';
+import anchor, { scrollToAnchor } from './src/anchor';
+import cookies, { getPolicyCookie, removePolicyCookie } from './src/cookies';
+import debounce from './src/debounce';
+import events from './src/events';
+import forEach from './src/forEach';
+import goToTop from './src/goToTop';
+import scrollDirection from './src/scrollDirection';
+import scrollTo from './src/scrollTo';
+import scrollTop from './src/scrollTop';
+import touchable from './src/touchable';
 
 export {
-  Anchor,
+  anchor,
   scrollToAnchor,
-  Cookies,
+  cookies,
   getPolicyCookie,
   removePolicyCookie,
-  Events,
-  ForEach,
-  GoTop,
-  ScrollDirection,
-  ScrollTo,
-  ScrollTop,
-  Touchable
+  debounce,
+  events,
+  forEach,
+  goToTop,
+  scrollDirection,
+  scrollTo,
+  scrollTop,
+  touchable
 };

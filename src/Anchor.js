@@ -1,6 +1,6 @@
 // For a best approach to fix the header height
 // https://css-tricks.com/hash-tag-links-padding/
-import ForEach from './ForEach';
+import forEach from './forEach';
 
 let opts = {
   trigger: 'js-anchor',
@@ -18,12 +18,12 @@ export function scrollToAnchor(hash) {
   window.scrollTo(0, element.offsetTop - opts.offsetTop);
 }
 
-export default function Anchor(settings) {
+export default function anchor(settings) {
   if (settings) handleExtend(settings);
   if (document.location.hash) scrollToAnchor();
 
   const triggers = document.querySelectorAll(`.${opts.trigger}`);
-  ForEach(triggers, index => {
+  forEach(triggers, index => {
     triggers[index].addEventListener('click', event => {
       event.preventDefault();
       const anchorHash = triggers[index].getAttribute(opts.attribute);

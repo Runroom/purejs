@@ -7,7 +7,7 @@ describe('Cookies behavior', () => {
     </div>`;
 
     document.body.insertAdjacentHTML('afterbegin', fixture);
-    purejs.Cookies();
+    purejs.cookies();
   });
   afterEach(() => {
     document.body.removeChild(document.querySelector('.sample'));

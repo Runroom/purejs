@@ -1,5 +1,5 @@
 import jsCookies from '../node_modules/js-cookie';
-import Events from './Events';
+import events from './events';
 
 let opts = {
   element: 'js-cookies',
@@ -27,7 +27,7 @@ function cleanPaddingToPage() {
 export const getPolicyCookie = () => jsCookies.get(opts.cookieName);
 export const removePolicyCookie = () => jsCookies.remove(opts.cookieName);
 
-export default function Cookies(settings) {
+export default function cookies(settings) {
   if (settings) {
     handleExtend(settings);
   }
@@ -46,5 +46,5 @@ export default function Cookies(settings) {
     if (opts.paddingBottom) cleanPaddingToPage();
   });
 
-  Events.onResize(addPaddingToPage);
+  events.onResize(addPaddingToPage);
 }

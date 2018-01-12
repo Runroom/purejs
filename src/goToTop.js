@@ -1,5 +1,5 @@
-import Debounce from './Debounce';
-import ScrollTo from './ScrollTo';
+import debounce from './debounce';
+import scrollTo from './scrollTo';
 
 const pageHeight = document.body.clientHeight;
 let maxScrollTop = pageHeight * 0.25;
@@ -62,13 +62,13 @@ export function createScrollTop() {
 
   element.addEventListener('click', event => {
     event.preventDefault();
-    ScrollTo(0);
+    scrollTo(0);
   });
 
   document.body.appendChild(element);
 }
 
-export default function GoTop(settings) {
+export default function goToTop(settings) {
   if (settings) {
     handleExtend(settings);
   }
@@ -76,6 +76,6 @@ export default function GoTop(settings) {
   if (opts.createElement) createScrollTop();
   handleScrollTopVisibility();
   window.addEventListener('scroll', () => {
-    Debounce(handleScrollTopVisibility);
+    debounce(handleScrollTopVisibility);
   });
 }

@@ -42,7 +42,7 @@ export function getConfig() {
   return opts;
 }
 
-export default function ScrollDirection(settings) {
+export default function scrollDirection(settings) {
   if (settings) {
     handleExtend(settings);
   }

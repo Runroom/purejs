@@ -12,7 +12,7 @@ describe('Anchor behavior', () => {
     </div>`;
 
     document.body.insertAdjacentHTML('afterbegin', fixture);
-    purejs.Anchor();
+    purejs.anchor();
   });
   afterEach(() => {
     document.body.removeChild(document.querySelector('.sample'));

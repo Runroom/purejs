@@ -2,7 +2,7 @@ describe('ForEach behavior', () => {
   const elements = [2, 4, 6, 8, 10];
   let total = 0;
 
-  purejs.ForEach(elements, index => {
+  purejs.forEach(elements, index => {
     total += elements[index];
   });
 

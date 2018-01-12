@@ -25,9 +25,7 @@ function onResize(fn) {
   });
 }
 
-const Events = {
+export default {
   onDocumentReady,
   onResize
 };
-
-export default Events;
