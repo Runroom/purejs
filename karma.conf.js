@@ -5,11 +5,10 @@ module.exports = function(config) {
   config.set({
     basePath: '',
     frameworks: ['mocha', 'sinon-chai', 'chai'],
-    files: ['lib/purejs.min.js', 'tests/**/*.spec.js'],
-    exclude: ['**/_*.js'],
+    files: ['lib/purejs.min.js', 'test/**/*.js'],
     preprocessors: {
       'lib/purejs.min.js': ['coverage'],
-      'tests/**/*.spec.js': ['babel']
+      'test/**/*.js': ['babel']
     },
     babelPreprocessor: {
       options: { presets: ['env'], sourceMap: 'inline' },
@@ -38,7 +37,6 @@ module.exports = function(config) {
       require('istanbul-instrumenter-loader'),
       require('karma-babel-preprocessor'),
       require('karma-chai'),
-      // require('karma-chai-spies'),
       require('karma-chrome-launcher'),
       require('karma-coverage'),
       require('karma-mocha'),

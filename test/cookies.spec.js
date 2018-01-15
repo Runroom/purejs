@@ -1,17 +1,6 @@
 describe('Cookies behavior', () => {
   beforeEach(() => {
-    const fixture = `<div class="sample">
-      <div class="js-cookies">
-        <button class="js-cookies-accept"></button>
-      </div>
-    </div>`;
-
-    document.body.insertAdjacentHTML('afterbegin', fixture);
     purejs.cookies();
-  });
-  afterEach(() => {
-    document.body.removeChild(document.querySelector('.sample'));
-    purejs.removePolicyCookie();
   });
 
   it('should not exist cookie by default', () => {
@@ -25,5 +14,10 @@ describe('Cookies behavior', () => {
     document.querySelector('.js-cookies-accept').click();
     expect(document.querySelector('.js-cookies').className).to.not.have.string('cookies--state-visible');
     expect(purejs.getPolicyCookie()).to.equal('true');
+  });
+  it('cookie should be deleted', () => {
+    expect(purejs.getPolicyCookie()).to.not.be.undefined;
+    purejs.removePolicyCookie();
+    expect(purejs.getPolicyCookie()).to.be.undefined;
   });
 });

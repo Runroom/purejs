@@ -3,13 +3,12 @@ import scrollTo from './scrollTo';
 
 const pageHeight = document.body.clientHeight;
 let maxScrollTop = pageHeight * 0.25;
-
 let scrollIsVisible = false;
 
 let opts = {
-  elementClass: 'js-scrollTop',
+  element: 'js-scrollTop',
   hiddenClass: null,
-  createElement: true,
+  createButton: true,
   scrollOffset: 0.25
 };
 
@@ -19,30 +18,36 @@ function handleExtend(settings) {
 }
 
 function handleScrollTopVisibility() {
+  const element = document.querySelector(`.${opts.element}`);
+  if (!element) {
+    throw new Error(`Element .${opts.element} not found`);
+  }
+
   if (window.scrollY >= maxScrollTop && !scrollIsVisible) {
     if (opts.hiddenClass) {
-      document.querySelector(`.${opts.elementClass}`).classList.remove(opts.hiddenClass);
+      element.classList.remove(opts.hiddenClass);
     } else {
-      document.querySelector(`.${opts.elementClass}`).style.display = 'block';
+      element.style.display = 'block';
     }
     scrollIsVisible = true;
   } else if (scrollIsVisible) {
     if (opts.hiddenClass) {
-      document.querySelector(`.${opts.elementClass}`).classList.add(opts.hiddenClass);
+      element.classList.add(opts.hiddenClass);
     } else {
-      document.querySelector(`.${opts.elementClass}`).style.display = 'none';
+      element.style.display = 'none';
     }
     scrollIsVisible = false;
   }
+  Promise.resolve();
 }
 
-export function createScrollTop() {
+export function createScrollTopButton() {
   const styles = {
     background: 'rgba(0, 0, 0, .5)',
     border: '0',
     bottom: '24px',
     borderRadius: '50%',
-    display: 'block',
+    display: 'none',
     height: '48px',
     position: 'fixed',
     right: '24px',
@@ -56,7 +61,7 @@ export function createScrollTop() {
 
   const element = document.createElement('a');
 
-  element.className = opts.elementClass;
+  element.className = opts.element;
   Object.assign(element.style, styles);
   element.innerHTML = content;
 
@@ -68,12 +73,12 @@ export function createScrollTop() {
   document.body.appendChild(element);
 }
 
-export default function goToTop(settings) {
+export default function scrollToTop(settings) {
   if (settings) {
     handleExtend(settings);
   }
 
-  if (opts.createElement) createScrollTop();
+  if (opts.createButton) createScrollTopButton();
   handleScrollTopVisibility();
   window.addEventListener('scroll', () => {
     debounce(handleScrollTopVisibility);

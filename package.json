@@ -8,12 +8,7 @@
     "url": "git@github.com:Runroom/pure-js.git"
   },
   "license": "MIT",
-  "keywords": [
-    "runroom",
-    "starter-kit",
-    "library",
-    "no-jquery"
-  ],
+  "keywords": ["runroom", "starter-kit", "library", "no-jquery"],
   "main": "lib/purejs.min.js",
   "engines": {
     "node": ">=6.0.0"
@@ -34,7 +29,6 @@
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-preset-env": "1.6.0",
     "chai": "4.1.2",
-    "chai-spies": "^1.0.0",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "15.0.1",
     "eslint-config-prettier": "2.1.1",
@@ -50,7 +44,6 @@
     "karma": "^2.0.0",
     "karma-babel-preprocessor": "^7.0.0",
     "karma-chai": "0.1.0",
-    "karma-chai-spies": "^0.1.4",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "1.1.1",
     "karma-mocha": "1.3.0",
