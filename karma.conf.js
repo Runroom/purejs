@@ -38,7 +38,7 @@ module.exports = function(config) {
       require('istanbul-instrumenter-loader'),
       require('karma-babel-preprocessor'),
       require('karma-chai'),
-      require('karma-chai-spies'),
+      // require('karma-chai-spies'),
       require('karma-chrome-launcher'),
       require('karma-coverage'),
       require('karma-mocha'),
