@@ -5,7 +5,7 @@ let opts = {
   element: 'js-cookies',
   button: 'js-cookies-accept',
   cookieName: 'accept_cookies',
-  visibleClass: 'cookies--state-visible',
+  visibleClass: false,
   paddingBottom: false
 };
 
@@ -36,13 +36,21 @@ export default function cookies(settings) {
 
   if (accepted === undefined) {
     if (opts.paddingBottom) addPaddingToPage();
-    document.querySelector(`.${opts.element}`).classList.add(opts.visibleClass);
+    if (opts.visibleClass) {
+      document.querySelector(`.${opts.element}`).classList.add(opts.visibleClass);
+    } else {
+      document.querySelector(`.${opts.element}`).style.display = 'block';
+    }
   }
 
   document.querySelector(`.${opts.button}`).addEventListener('click', event => {
     event.preventDefault();
     jsCookies.set(opts.cookieName, 'true', { expires: 365 });
-    document.querySelector(`.${opts.element}`).classList.remove(opts.visibleClass);
+    if (opts.visibleClass) {
+      document.querySelector(`.${opts.element}`).classList.remove(opts.visibleClass);
+    } else {
+      document.querySelector(`.${opts.element}`).style.display = 'none';
+    }
     if (opts.paddingBottom) cleanPaddingToPage();
   });
 

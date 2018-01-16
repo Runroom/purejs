@@ -1,12 +1,11 @@
-# Pure JS
+# PureJS
 
-Pure JS is a pack of pure javascript non-jquery functions exported as [Node.js](https://nodejs.org/) modules.
+PureJS is a pack of pure javascript, non-jquery, functions exported as [Node.js](https://nodejs.org/) modules.
 
 ## Installation
 
 ```
-$ yarn add pure-js
-$ npm i pure-js
+$ yarn add @runroom/purejs
 ```
 
 ## Supported modules

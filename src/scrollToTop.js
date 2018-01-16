@@ -31,7 +31,7 @@ function handleScrollTopVisibility() {
       element.style.display = 'block';
     }
     scrollIsVisible = true;
-  } else if (scrollIsVisible) {
+  } else if (safeScrollTop() < maxScrollTop && scrollIsVisible) {
     if (opts.hiddenClass) {
       element.classList.add(opts.hiddenClass);
     } else {
@@ -47,6 +47,7 @@ export function createScrollTopButton() {
     border: '0',
     bottom: '24px',
     borderRadius: '50%',
+    cursor: 'pointer',
     display: 'none',
     height: '48px',
     position: 'fixed',

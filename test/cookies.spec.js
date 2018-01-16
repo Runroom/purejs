@@ -8,13 +8,13 @@ describe('Cookies behavior', () => {
     done();
   });
   it('element should have visible class', done => {
-    expect(document.querySelector('.js-cookies').className).to.have.string('cookies--state-visible');
+    expect(document.querySelector('.js-cookies').style.display).to.be.equal('block');
     done();
   });
   it('element should not be visible', done => {
     expect(purejs.getPolicyCookie()).to.be.undefined;
     document.querySelector('.js-cookies-accept').click();
-    expect(document.querySelector('.js-cookies').className).to.not.have.string('cookies--state-visible');
+    expect(document.querySelector('.js-cookies').style.display).to.be.equal('none');
     expect(purejs.getPolicyCookie()).to.equal('true');
     done();
   });

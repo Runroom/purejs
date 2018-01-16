@@ -9,6 +9,23 @@ import scrollTo from './src/scrollTo';
 import scrollToTop, { createScrollTopButton } from './src/scrollToTop';
 import touchable from './src/touchable';
 
+const purejs = {
+  anchor,
+  scrollToAnchor,
+  cookies,
+  getPolicyCookie,
+  removePolicyCookie,
+  debounce,
+  events,
+  forEach,
+  safeScrollTop,
+  scrollDirection,
+  scrollTo,
+  scrollToTop,
+  createScrollTopButton,
+  touchable
+};
+
 export {
   anchor,
   scrollToAnchor,
@@ -25,3 +42,5 @@ export {
   createScrollTopButton,
   touchable
 };
+
+export default purejs;
