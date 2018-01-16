@@ -1,7 +1,6 @@
 describe('Debounce behavior', () => {
   it('function should be called 99 (luftballons 😜 ) times', done => {
     const baz = { bar: () => {} };
-
     sinon.spy(baz, 'bar');
 
     window.addEventListener('resize', () => {

@@ -1,4 +1,5 @@
-import debounce from './debounce';
+// import debounce from './debounce';
+import safeScrollTop from './safeScrollTop';
 import scrollTo from './scrollTo';
 
 const pageHeight = document.body.clientHeight;
@@ -14,7 +15,7 @@ let opts = {
 
 function handleExtend(settings) {
   opts = Object.assign({}, opts, settings);
-  maxScrollTop = pageHeight * opts.scrollOffset;
+  maxScrollTop = document.body.clientHeight * opts.scrollOffset;
 }
 
 function handleScrollTopVisibility() {
@@ -23,7 +24,7 @@ function handleScrollTopVisibility() {
     throw new Error(`Element .${opts.element} not found`);
   }
 
-  if (window.scrollY >= maxScrollTop && !scrollIsVisible) {
+  if (safeScrollTop() >= maxScrollTop && !scrollIsVisible) {
     if (opts.hiddenClass) {
       element.classList.remove(opts.hiddenClass);
     } else {
@@ -38,7 +39,6 @@ function handleScrollTopVisibility() {
     }
     scrollIsVisible = false;
   }
-  Promise.resolve();
 }
 
 export function createScrollTopButton() {
@@ -80,7 +80,5 @@ export default function scrollToTop(settings) {
 
   if (opts.createButton) createScrollTopButton();
   handleScrollTopVisibility();
-  window.addEventListener('scroll', () => {
-    debounce(handleScrollTopVisibility);
-  });
+  window.addEventListener('scroll', handleScrollTopVisibility);
 }

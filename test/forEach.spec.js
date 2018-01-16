@@ -6,6 +6,9 @@ describe('ForEach behavior', () => {
     total += elements[index];
   });
 
-  it('should have length of 5', () => expect(elements).to.have.lengthOf(5));
-  it('should return 30', () => expect(total).to.equal(30));
+  it('should return sum of elements', done => {
+    expect(elements).to.have.lengthOf(5);
+    expect(total).to.equal(30);
+    done();
+  });
 });
