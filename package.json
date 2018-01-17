@@ -5,7 +5,7 @@
   "author": "Italo Devoto Ramella <italodr@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Runroom/pure-js.git"
+    "url": "git@github.com:Runroom/purejs.git"
   },
   "license": "ISC",
   "keywords": ["runroom", "starter-kit", "library", "no-jquery"],

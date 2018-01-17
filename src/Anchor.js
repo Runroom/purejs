@@ -3,7 +3,7 @@
 import forEach from './forEach';
 
 let opts = {
-  trigger: 'js-anchor',
+  element: 'js-anchor',
   attribute: 'data-anchor',
   offsetTop: 0
 };
@@ -22,7 +22,7 @@ export default function anchor(settings) {
   if (settings) handleExtend(settings);
   if (document.location.hash) scrollToAnchor();
 
-  const triggers = document.querySelectorAll(`.${opts.trigger}`);
+  const triggers = document.querySelectorAll(`.${opts.element}`);
   forEach(triggers, index => {
     triggers[index].addEventListener('click', event => {
       event.preventDefault();

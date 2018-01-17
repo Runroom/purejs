@@ -1,5 +1,5 @@
+let lastScrollTop = 0;
 let opts = {
-  lastScrollTop: 0,
   deltaUp: 10,
   deltaDown: 10,
   classUp: 'scroll-up',
@@ -16,21 +16,21 @@ function onPageScroll() {
 
   if (currentScrollTop <= 0) {
     clearElementClass();
-    opts.lastScrollTop = currentScrollTop;
-  } else if (currentScrollTop > opts.lastScrollTop) {
-    if (Math.abs(opts.lastScrollTop - currentScrollTop) >= opts.deltaDown) {
+    lastScrollTop = currentScrollTop;
+  } else if (currentScrollTop > lastScrollTop) {
+    if (Math.abs(lastScrollTop - currentScrollTop) >= opts.deltaDown) {
       if (!document.documentElement.classList.contains(opts.classDown)) {
         clearElementClass();
         document.documentElement.classList.add(opts.classDown);
       }
-      opts.lastScrollTop = currentScrollTop;
+      lastScrollTop = currentScrollTop;
     }
-  } else if (Math.abs(opts.lastScrollTop - currentScrollTop) >= opts.deltaUp) {
+  } else if (Math.abs(lastScrollTop - currentScrollTop) >= opts.deltaUp) {
     if (!document.documentElement.classList.contains(opts.classUp)) {
       clearElementClass();
       document.documentElement.classList.add(opts.classUp);
     }
-    opts.lastScrollTop = currentScrollTop;
+    lastScrollTop = currentScrollTop;
   }
 }
 
