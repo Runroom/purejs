@@ -23,7 +23,7 @@ purejs.events.onDocumentReady(() => {
   // ...
 });
 
-// or˚
+// or
 import { cookies, events } from '@runroom/purejs'
 
 events.onDocumentReady(() => {
