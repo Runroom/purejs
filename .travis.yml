@@ -5,15 +5,9 @@ branches:
   only:
     - master
 language: node_js
-# cache node modules
-cache:
-  directories:
-    - node_modules
 node_js:
   - 'stable'
 before_install:
-  # remove outdated deps, assists with cache maintenance
-  - npm prune
   # help Travis to use Chrome
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
