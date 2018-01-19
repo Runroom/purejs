@@ -19,7 +19,7 @@ let customLaunchers = {};
 let singleRun = false;
 
 if (process.env.TRAVIS) {
-  browsers = ['Chrome', 'Chrome_travis_ci'];
+  browsers = ['Chrome_travis_ci'];
   reporters.push('coveralls');
   coverageReporters.push({ type: 'lcov', dir: 'coverage' });
   customLaunchers = {
