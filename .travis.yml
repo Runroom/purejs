@@ -4,7 +4,6 @@ git:
 branches:
   only:
     - master
-    - feature/coveralls
 language: node_js
 # cache node modules
 cache:
