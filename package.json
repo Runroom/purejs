@@ -1,6 +1,6 @@
 {
   "name": "@runroom/purejs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "PureJS is a pack of pure javascript, non-jquery, functions exported as Nodejs modules.",
   "author": "Italo Devoto Ramella <italodr@gmail.com>",
   "repository": {
