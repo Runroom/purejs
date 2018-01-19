@@ -13,4 +13,7 @@ yarn-error.log
 
 # NPM
 pure-js*.tgz
+
+# KARMA
 build
+coverage
