@@ -1,14 +1,15 @@
 // Karma configuration
 // Generated on Wed Jan 10 2018 09:56:25 GMT+0100 (CET)
 const plugins = [
-  require('istanbul-instrumenter-loader'),
-  require('karma-babel-preprocessor'),
-  require('karma-chai'),
-  require('karma-chrome-launcher'),
-  require('karma-coverage'),
-  require('karma-mocha'),
-  require('karma-mocha-reporter'),
-  require('karma-sinon-chai')
+  'istanbul-instrumenter-loader',
+  'karma-babel-preprocessor',
+  'karma-chai',
+  'karma-chrome-launcher',
+  'karma-coverage',
+  'karma-coveralls',
+  'karma-mocha',
+  'karma-mocha-reporter',
+  'karma-sinon-chai'
 ];
 const coverageReporters = [{ type: 'text-summary' }];
 const reporters = ['mocha', 'coverage'];
