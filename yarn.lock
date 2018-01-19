@@ -3210,7 +3210,7 @@ karma-coverage@1.1.1:
     minimatch "^3.0.0"
     source-map "^0.5.1"
 
-karma-coveralls@^1.1.2:
+karma-coveralls@1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/karma-coveralls/-/karma-coveralls-1.1.2.tgz#6f960ee738793b087ba99284a854ef6be4d32ae0"
   dependencies:

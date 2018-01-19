@@ -6,7 +6,6 @@ const plugins = [
   require('karma-chai'),
   require('karma-chrome-launcher'),
   require('karma-coverage'),
-  require('karma-coveralls'),
   require('karma-mocha'),
   require('karma-mocha-reporter'),
   require('karma-sinon-chai')
