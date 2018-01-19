@@ -1,6 +1,6 @@
 {
   "name": "@runroom/purejs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "PureJS is a pack of pure javascript, non-jquery, functions exported as Nodejs modules.",
   "author": "Italo Devoto Ramella <italodr@gmail.com>",
   "repository": {
@@ -8,7 +8,12 @@
     "url": "git@github.com:Runroom/purejs.git"
   },
   "license": "ISC",
-  "keywords": ["runroom", "starter-kit", "library", "no-jquery"],
+  "keywords": [
+    "runroom",
+    "starter-kit",
+    "library",
+    "no-jquery"
+  ],
   "main": "lib/purejs.min.js",
   "engines": {
     "node": ">=6.0.0"
