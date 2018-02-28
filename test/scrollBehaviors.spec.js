@@ -1,10 +1,18 @@
 describe('Scroll behaviors', () => {
   before(() => {
-    purejs.anchor();
     purejs.scrollDirection();
   });
 
-  describe('anchor.js', () => {
+  describe('safeScrollTop.js', () => {
+    it('window offset top should be top of container', done => {
+      purejs.scrollTo.anchor('#sample');
+      expect(purejs.safeScrollTop()).to.equal(document.querySelector('#sample').offsetTop);
+      purejs.scrollTo.anchor(0);
+      done();
+    });
+  });
+
+  describe('scrollTo.js', () => {
     it('window offset should be on top of container', done => {
       expect(purejs.safeScrollTop()).to.equal(0);
       done();
@@ -15,41 +23,40 @@ describe('Scroll behaviors', () => {
       done();
     });
 
-    it('should scroll to first container on click', done => {
-      document.querySelector('.anchor1').click();
+    it('should anchor to first container', done => {
+      purejs.scrollTo.anchor('#container1');
       expect(purejs.safeScrollTop()).to.equal(document.querySelector('#container1').offsetTop);
       done();
     });
 
-    it('should scroll to second container on click', done => {
-      document.querySelector('.anchor2').click();
-      expect(purejs.safeScrollTop()).to.equal(document.querySelector('#container2').offsetTop);
-      done();
+    it('should animate to second container', done => {
+      purejs.scrollTo.animate('#container2');
+      setTimeout(() => {
+        expect(purejs.safeScrollTop()).to.equal(document.querySelector('#container2').offsetTop);
+        done();
+      }, 600);
     });
 
-    it('should scroll to third container manually', done => {
-      purejs.scrollToAnchor('#container3');
-      expect(purejs.safeScrollTop()).to.equal(document.querySelector('#container3').offsetTop);
-      done();
-    });
-  });
-
-  describe('safeScrollTop.js', () => {
-    it('window offset top should be top of container', done => {
-      purejs.scrollToAnchor('#sample');
-      expect(purejs.safeScrollTop()).to.equal(document.querySelector('#sample').offsetTop);
-      done();
+    it('should animate to third container faster', done => {
+      purejs.scrollTo.animate('#container3', 200);
+      setTimeout(() => {
+        expect(purejs.safeScrollTop()).to.equal(document.querySelector('#container3').offsetTop);
+        done();
+      }, 300);
     });
   });
 
   describe('scrollDirection.js', () => {
     it('should not have scroll direction class', done => {
-      expect(document.documentElement.className).to.not.have.string('scroll');
-      done();
+      purejs.scrollTo.anchor(0);
+      setTimeout(() => {
+        expect(document.documentElement.className).to.not.have.string('scroll');
+        done();
+      }, 100);
     });
 
     it('should have scroll-down class', done => {
-      purejs.scrollToAnchor('#container2');
+      purejs.scrollTo.anchor('#container2');
       expect(purejs.safeScrollTop()).to.equal(document.querySelector('#container2').offsetTop);
 
       setTimeout(() => {
@@ -60,7 +67,7 @@ describe('Scroll behaviors', () => {
     });
 
     it('should have scroll-up class', done => {
-      purejs.scrollToAnchor('#container1');
+      purejs.scrollTo.anchor('#container1');
       expect(purejs.safeScrollTop()).to.equal(document.querySelector('#container1').offsetTop);
 
       setTimeout(() => {
@@ -68,58 +75,6 @@ describe('Scroll behaviors', () => {
         expect(document.documentElement.className).to.not.contain('scroll-down');
         done();
       }, 100);
-    });
-  });
-
-  describe('scrollTo.js', () => {
-    it('should be on top of container', done => {
-      purejs.scrollToAnchor('#sample');
-      expect(purejs.safeScrollTop()).to.equal(document.querySelector('#sample').offsetTop);
-      done();
-    });
-
-    it('should be on top of selected element', done => {
-      purejs.scrollTo(document.querySelector('#container3').offsetTop);
-
-      setTimeout(() => {
-        expect(purejs.safeScrollTop()).to.equal(document.querySelector('#container3').offsetTop);
-        done();
-      }, 600);
-    });
-  });
-
-  describe('scrollToTop.js', () => {
-    it('button should not be created', done => {
-      expect(() => {
-        purejs.scrollToTop({ createButton: false });
-      }).to.throw('Element .js-scrollTop not found');
-      done();
-    });
-
-    it('button should be created', done => {
-      purejs.scrollToAnchor('#sample');
-      expect(purejs.safeScrollTop()).to.be.equal(document.querySelector('#sample').offsetTop);
-
-      expect(() => {
-        purejs.scrollToTop({ createButton: true });
-      }).to.not.throw('Element .js-scrollTop not found');
-      expect(document.querySelector('.js-scrollTop')).to.not.be.null;
-      expect(document.querySelector('.js-scrollTop').style.display).to.be.equal('none');
-
-      purejs.scrollToAnchor('#footer');
-
-      setTimeout(() => {
-        expect(purejs.safeScrollTop()).to.be.above(1000);
-        expect(document.querySelector('.js-scrollTop').style.display).to.be.equal('block');
-
-        document.querySelector('.js-scrollTop').click();
-
-        setTimeout(() => {
-          expect(purejs.safeScrollTop()).to.be.equal(0);
-          expect(document.querySelector('.js-scrollTop').style.display).to.be.equal('none');
-          done();
-        }, 600);
-      }, 300);
     });
   });
 });

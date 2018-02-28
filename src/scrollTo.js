@@ -1,5 +1,8 @@
 import safeScrollTop from './safeScrollTop';
 
+// For a best approach to fix the header height
+// https://css-tricks.com/hash-tag-links-padding/
+
 /**
  * t = current time
  * b = start value
@@ -13,9 +16,28 @@ const easeInOutQuad = (t, b, c, d) => {
   return -c / 2 * (currentTime * (currentTime - 2) - 1) + b;
 };
 
-export default function scrollTo(startPoint, duration = 500) {
+const isInt = n => Number(n) === n;
+
+function getElementOffsetTop(value) {
+  if (!isInt(value)) {
+    const elem = document.querySelector(value);
+    if (elem) return elem.offsetTop;
+  }
+  return value || 0;
+}
+
+function anchor(element, offset = 0) {
+  const target = getElementOffsetTop(element);
+  if (!isInt(element)) {
+    document.location.hash = element;
+  }
+  window.scrollTo(0, target - offset);
+}
+
+function animate(startPoint, duration = 500, offset = 0) {
   const start = safeScrollTop();
-  const change = startPoint - start;
+  const target = getElementOffsetTop(startPoint);
+  const change = target - start - offset;
   const increment = 20;
   let currentTime = 0;
 
@@ -23,8 +45,15 @@ export default function scrollTo(startPoint, duration = 500) {
     currentTime += increment;
     const val = easeInOutQuad(currentTime, start, change, duration);
     window.scroll(0, val);
-    if (currentTime < duration) {
-      setTimeout(animateScroll, increment);
-    }
+    if (currentTime < duration) setTimeout(animateScroll, increment);
   })();
 }
+
+function scrollTo() {
+  return {
+    anchor,
+    animate
+  };
+}
+
+export default scrollTo();

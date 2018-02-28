@@ -38,14 +38,8 @@ function handleExtend(settings) {
   opts = Object.assign({}, opts, settings);
 }
 
-export function getConfig() {
-  return opts;
-}
-
 export default function scrollDirection(settings) {
-  if (settings) {
-    handleExtend(settings);
-  }
+  if (settings) handleExtend(settings);
 
   if (window.addEventListener) {
     window.addEventListener('scroll', onPageScroll);

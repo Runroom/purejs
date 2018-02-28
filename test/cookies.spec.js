@@ -1,27 +1,18 @@
 describe('Cookies behavior', () => {
-  beforeEach(() => {
-    purejs.cookies();
-  });
-
-  it('should not exist cookie by default', done => {
-    expect(purejs.getPolicyCookie()).to.be.undefined;
+  it('should not exist cookie by default 😩', done => {
+    expect(purejs.cookies.get('foo')).to.be.empty;
     done();
   });
-  it('element should have visible class', done => {
-    expect(document.querySelector('.js-cookies').style.display).to.be.equal('block');
+  it('cookie should be created 😃 🍪', done => {
+    expect(purejs.cookies.get('foo')).to.be.empty;
+    purejs.cookies.set('foo');
+    expect(purejs.cookies.get('foo')).to.equal('1');
     done();
   });
-  it('element should not be visible', done => {
-    expect(purejs.getPolicyCookie()).to.be.undefined;
-    document.querySelector('.js-cookies-accept').click();
-    expect(document.querySelector('.js-cookies').style.display).to.be.equal('none');
-    expect(purejs.getPolicyCookie()).to.equal('true');
-    done();
-  });
-  it('cookie should be deleted', done => {
-    expect(purejs.getPolicyCookie()).to.not.be.undefined;
-    purejs.removePolicyCookie();
-    expect(purejs.getPolicyCookie()).to.be.undefined;
+  it('cookie should be deleted 😭', done => {
+    expect(purejs.cookies.get('foo')).to.equal('1');
+    purejs.cookies.remove('foo');
+    expect(purejs.cookies.get('foo')).to.be.empty;
     done();
   });
 });

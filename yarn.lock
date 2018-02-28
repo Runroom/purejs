@@ -3094,10 +3094,6 @@ jest-docblock@^20.0.1:
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/jest-docblock/-/jest-docblock-20.0.3.tgz#17bea984342cc33d83c50fbe1545ea0efaa44712"
 
-js-cookie@2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.1.4.tgz#da4ec503866f149d164cf25f579ef31015025d8d"
-
 js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"

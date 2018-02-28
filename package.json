@@ -8,12 +8,7 @@
     "url": "git@github.com:Runroom/purejs.git"
   },
   "license": "ISC",
-  "keywords": [
-    "runroom",
-    "starter-kit",
-    "library",
-    "no-jquery"
-  ],
+  "keywords": ["runroom", "starter-kit", "library", "no-jquery"],
   "main": "lib/purejs.min.js",
   "engines": {
     "node": ">=6.0.0"
@@ -22,9 +17,6 @@
     "build": "webpack --env build",
     "dev": "webpack --env dev",
     "test": "karma start"
-  },
-  "dependencies": {
-    "js-cookie": "2.1.4"
   },
   "devDependencies": {
     "babel-cli": "6.24.1",
