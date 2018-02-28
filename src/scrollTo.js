@@ -7,7 +7,7 @@ import safeScrollTop from './safeScrollTop';
  * t = current time
  * b = start value
  * c = change in value
- * d = duration
+ * d = speed
  */
 const easeInOutQuad = (t, b, c, d) => {
   let currentTime = t / (d / 2);
@@ -34,18 +34,18 @@ function anchor(element, offset = 0) {
   window.scrollTo(0, target - offset);
 }
 
-function animate(startPoint, duration = 500, offset = 0) {
+function animate(element, speed = 500, offset = 0) {
   const start = safeScrollTop();
-  const target = getElementOffsetTop(startPoint);
+  const target = getElementOffsetTop(element);
   const change = target - start - offset;
   const increment = 20;
   let currentTime = 0;
 
   (function animateScroll() {
     currentTime += increment;
-    const val = easeInOutQuad(currentTime, start, change, duration);
+    const val = easeInOutQuad(currentTime, start, change, speed);
     window.scroll(0, val);
-    if (currentTime < duration) setTimeout(animateScroll, increment);
+    if (currentTime < speed) setTimeout(animateScroll, increment);
   })();
 }
 

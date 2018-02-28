@@ -20,7 +20,7 @@ Use it importing the whole library or the methods you need
 import purejs from '@runroom/purejs';
 
 purejs.events.onDocumentReady(() => {
-  purejs.cookies();
+  purejs.cookies.get('mycookie');
   // ...
 });
 
@@ -28,14 +28,13 @@ purejs.events.onDocumentReady(() => {
 import { cookies, events } from '@runroom/purejs'
 
 events.onDocumentReady(() => {
-  cookies();
+  cookies.get('mycookie');
   // ...
 });
 ```
 
 ## Supported modules
 
-* [Anchor](./doc/anchor.md)
 * [Cookies](./doc/cookies.md)
 * [Debounce](./doc/debounce.md)
 * [Events](./doc/events.md)
@@ -43,5 +42,4 @@ events.onDocumentReady(() => {
 * [SafeScrollTop](./doc/safeScrollTop.md)
 * [ScrollDirection](./doc/scrollDirection.md)
 * [ScrollTo](./doc/scrollTo.md)
-* [ScrollToTop](./doc/scrollToTop.md)
 * [Touchable](./doc/touchable.md)

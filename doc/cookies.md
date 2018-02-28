@@ -1,40 +1,28 @@
 # Cookies
 
-> Dependency: [js-cookie](https://www.npmjs.com/package/js-cookie) to manage Cookies setting
-
-Adds the **functionality** to your _cookies policy_ modal. You can use any markup and this module will be in charge of creating/requesting the acceptance cookie to show/hide the modal.
+Create, Read and Deletes cookies.
 
 ```javascript
-import { cookies, getPolicyCookie, removePolicyCookie } from '@runroom/purejs';
+import { cookies } from '@runroom/purejs';
 
-// Default settings
-const settings = {
-  element: 'js-cookies',
-  button: 'js-cookies-accept',
-  cookieName: 'accept_cookies',
-  visibleClass: false,
-  paddingBottom: false
-};
 ```
-
-| Setting       | Description           |
-| ------------- |:----------------------|
-| element | `{string}` The class of the cookie modal |
-| button | `{string}` The class of the accept cookie modal button |
-| cookieName | `{string}` The name of the accept cookie |
-| visibleClass | `{string}` The class of the element to make it visible. |
-| paddingBottom | `{boolean}` To add a padding at the bottom of the document to prevent element overlay |
 
 ## Methods
 
-### `cookies(opts)`
+### `get('cookie-name')`
 
-The **cookies** method initialize the function checking if the cookie exists and making your cookies modal visible or not. You can pass a custom setting.
+The **get** method returns the cookie value if exists, otherwise it returns an empty value.
 
-### `getPolicyCookie()`
+### `set('cookie-name', 'value', days)`
 
-The **getPolicyCookie** method returns the created cookie.
+The **set** method created a cookie. Parameters are `name` _(string)_,
 
-### `removePolicyCookie()`
+| Parameters | Description |
+| ---------- |:------------|
+| name | `{string}` * Mandatory. The name for the cookie. |
+| value| `{n}` The value can be any type of value. Default is 1 |
+| days | `{integer}` The days that the cookie will be available, by default is one year because of legal issues. Default is 365 |
 
-The **removePolicyCookie** method removes the created cookie.
+### `remove('cookie-name')`
+
+The **remove** method removes the created cookie.
