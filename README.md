@@ -38,7 +38,7 @@ events.onDocumentReady(() => {
 * [Cookies](./doc/cookies.md)
 * [Debounce](./doc/debounce.md)
 * [Events](./doc/events.md)
-* [ForEach](./forEach.md)
+* [ForEach](./doc/forEach.md)
 * [SafeScrollTop](./doc/safeScrollTop.md)
 * [ScrollDirection](./doc/scrollDirection.md)
 * [ScrollTo](./doc/scrollTo.md)
