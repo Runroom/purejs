@@ -25,7 +25,12 @@ function onResize(fn) {
   });
 }
 
+function onScroll(fn) {
+  window.addEventListener('scroll', fn);
+}
+
 export default {
   onDocumentReady,
-  onResize
+  onResize,
+  onScroll
 };
