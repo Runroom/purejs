@@ -1,52 +1,66 @@
 const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 const env = require('yargs').argv.env; // use --env with webpack 2
 
-const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const libraryName = 'purejs';
-const plugins = [];
+const minimizer = [];
 
 let suffix = '';
 
 if (env === 'build') {
-  plugins.push(new UglifyJsPlugin({ minimize: true }));
+  minimizer.push(
+    new UglifyJsPlugin({
+      cache: true,
+      parallel: true,
+      uglifyOptions: {
+        compress: true,
+        ecma: 6,
+        mangle: false,
+      },
+      sourceMap: false,
+    }),
+  );
   suffix = '.min';
 }
 
 const config = {
   entry: {
-    purejs: `${__dirname}/index.js`
+    purejs: `${__dirname}/index.js`,
   },
+  mode: env === 'build' ? 'production' : 'developmet',
   devtool: 'source-map',
   output: {
     path: `${__dirname}/lib`,
     filename: `[name]${suffix}.js`,
     library: libraryName,
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    umdNamedDefine: true,
   },
   module: {
     rules: [
       {
         test: /(\.jsx|\.js)$/,
         loader: 'babel-loader',
-        exclude: /(node_modules)/
+        exclude: /(node_modules)/,
       },
       {
         test: /(\.jsx|\.js)$/,
         loader: 'eslint-loader',
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolveLoader: {
-    modules: ['node_modules']
+    modules: ['node_modules'],
   },
   resolve: {
     modules: [path.resolve('./src'), 'node_modules'],
-    extensions: ['.json', '.js']
+    extensions: ['.json', '.js'],
   },
-  plugins
+  optimization: {
+    minimizer: minimizer,
+  },
 };
 
 module.exports = config;
