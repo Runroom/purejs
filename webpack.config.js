@@ -1,26 +1,15 @@
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 const env = require('yargs').argv.env; // use --env with webpack 2
 
+const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const libraryName = 'purejs';
-const minimizer = [];
+const plugins = [];
 
 let suffix = '';
 
 if (env === 'build') {
-  minimizer.push(
-    new UglifyJsPlugin({
-      cache: true,
-      parallel: true,
-      uglifyOptions: {
-        compress: true,
-        ecma: 6,
-        mangle: false,
-      },
-      sourceMap: false,
-    }),
-  );
+  plugins.push(new UglifyJsPlugin({ minimize: true }));
   suffix = '.min';
 }
 
@@ -28,7 +17,6 @@ const config = {
   entry: {
     purejs: `${__dirname}/index.js`,
   },
-  mode: env === 'build' ? 'production' : 'developmet',
   devtool: 'source-map',
   output: {
     path: `${__dirname}/lib`,
@@ -58,9 +46,7 @@ const config = {
     modules: [path.resolve('./src'), 'node_modules'],
     extensions: ['.json', '.js'],
   },
-  optimization: {
-    minimizer: minimizer,
-  },
+  plugins,
 };
 
 module.exports = config;
