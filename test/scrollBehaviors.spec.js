@@ -1,8 +1,4 @@
 describe('Scroll behaviors', () => {
-  before(() => {
-    purejs.scrollDirection();
-  });
-
   describe('safeScrollTop.js', () => {
     it('window offset top should be top of container', done => {
       purejs.scrollTo.anchor('#sample');
@@ -47,34 +43,35 @@ describe('Scroll behaviors', () => {
   });
 
   describe('scrollDirection.js', () => {
-    it('should not have scroll direction class', done => {
-      purejs.scrollTo.anchor(0);
-      setTimeout(() => {
-        expect(document.documentElement.className).to.not.have.string('scroll');
-        done();
-      }, 100);
-    });
-
-    it('should have scroll-down class', done => {
+    let scrollDirectionValue = 0;
+    before(() => {
       purejs.scrollTo.anchor('#container2');
-      expect(purejs.safeScrollTop()).to.equal(document.querySelector('#container2').offsetTop);
-
-      setTimeout(() => {
-        expect(document.documentElement.className).to.contain('scroll-down');
-        expect(document.documentElement.className).to.not.contain('scroll-up');
-        done();
-      }, 100);
+      window.addEventListener('scroll', () => {
+        scrollDirectionValue = purejs.scrollDirection();
+      });
     });
 
-    it('should have scroll-up class', done => {
-      purejs.scrollTo.anchor('#container1');
-      expect(purejs.safeScrollTop()).to.equal(document.querySelector('#container1').offsetTop);
-
+    it('should return -1 on scroll up', done => {
+      purejs.scrollTo.animate(0, 200);
       setTimeout(() => {
-        expect(document.documentElement.className).to.contain('scroll-up');
-        expect(document.documentElement.className).to.not.contain('scroll-down');
+        expect(scrollDirectionValue).to.equal(-1);
+      }, 50);
+      setTimeout(() => {
+        expect(purejs.safeScrollTop()).to.equal(0);
         done();
-      }, 100);
+      }, 300);
+    });
+
+    it('should return 1 on scroll down', done => {
+      purejs.scrollTo.animate('#container2', 200);
+      setTimeout(() => {
+        expect(scrollDirectionValue).to.equal(1);
+        done();
+      }, 50);
+      setTimeout(() => {
+        expect(purejs.safeScrollTop()).to.equal(document.querySelector('#container2').offsetTop);
+        done();
+      }, 300);
     });
   });
 });
