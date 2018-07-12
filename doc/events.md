@@ -7,11 +7,11 @@ import { events } from '@runroom/purejs';
 
 // Usage
 events.onDocumentReady(() => {
-  // My awesome code
+  // Your awesome code
 });
 
 events.onResize(() => {
-  // My awesome code
+  // Your awesome code
 });
 ```
 

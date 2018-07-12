@@ -17,19 +17,17 @@ $ yarn add @runroom/purejs
 Use it importing the whole library or the methods you need
 
 ```javascript
-import purejs from '@runroom/purejs';
-
-purejs.events.onDocumentReady(() => {
-  purejs.cookies.get('mycookie');
-  // ...
-});
-
-// or
 import { cookies, events } from '@runroom/purejs'
 
 events.onDocumentReady(() => {
   cookies.get('mycookie');
-  // ...
+});
+
+// or
+import purejs from '@runroom/purejs';
+
+purejs.events.onDocumentReady(() => {
+  purejs.cookies.get('mycookie');
 });
 ```
 

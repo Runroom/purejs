@@ -11,6 +11,6 @@ import { forEach } from '@runroom/purejs';
 
 // Usage
 forEach(haystack, index => {
-  // My awesome code
+  // Your awesome code
 });
 ```

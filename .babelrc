@@ -1,4 +1,6 @@
 {
   "presets": ["env"],
-  "plugins": ["transform-object-assign"]
+  "plugins": [
+    "transform-object-assign"
+  ]
 }

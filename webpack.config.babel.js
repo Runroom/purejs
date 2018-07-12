@@ -1,8 +1,8 @@
-const webpack = require('webpack');
-const path = require('path');
-const env = require('yargs').argv.env; // use --env with webpack 2
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+import path from 'path';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+import { argv } from 'yargs';
 
+const { env } = argv;
 const libraryName = 'purejs';
 const plugins = [];
 const minimizer = [];
@@ -18,10 +18,10 @@ if (env === 'build') {
       uglifyOptions: {
         compress: true,
         ecma: 6,
-        mangle: false,
+        mangle: false
       },
-      sourceMap: false,
-    }),
+      sourceMap: false
+    })
   );
   mode = 'production';
   suffix = '.min';
@@ -29,7 +29,7 @@ if (env === 'build') {
 
 const config = {
   entry: {
-    purejs: `${__dirname}/index.js`,
+    purejs: `${__dirname}/index.js`
   },
   mode,
   devtool: 'source-map',
@@ -38,33 +38,33 @@ const config = {
     filename: `[name]${suffix}.js`,
     library: libraryName,
     libraryTarget: 'umd',
-    umdNamedDefine: true,
+    umdNamedDefine: true
   },
   module: {
     rules: [
       {
         test: /(\.jsx|\.js)$/,
         loader: 'babel-loader',
-        exclude: /(node_modules)/,
+        exclude: /(node_modules)/
       },
       {
         test: /(\.jsx|\.js)$/,
         loader: 'eslint-loader',
-        exclude: /node_modules/,
-      },
-    ],
+        exclude: /node_modules/
+      }
+    ]
   },
   resolveLoader: {
-    modules: ['node_modules'],
+    modules: ['node_modules']
   },
   resolve: {
     modules: [path.resolve('./src'), 'node_modules'],
-    extensions: ['.json', '.js'],
+    extensions: ['.json', '.js']
   },
   optimization: {
-    minimizer,
+    minimizer
   },
-  plugins,
+  plugins
 };
 
 module.exports = config;

@@ -9,7 +9,7 @@ import { debounce } from '@runroom/purejs';
 
 // Usage
 window.addEventListener('resize', debounce(() => {
-  // My awesome code
+  // Your awesome code
 }));
 ```
 > Note: for a better resize event [check this](./events.md)

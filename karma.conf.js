@@ -9,7 +9,7 @@ const plugins = [
   'karma-coveralls',
   'karma-mocha',
   'karma-mocha-reporter',
-  'karma-sinon-chai',
+  'karma-sinon-chai'
 ];
 const coverageReporters = [{ type: 'text-summary' }];
 const reporters = ['mocha', 'coverage'];
@@ -24,8 +24,8 @@ if (process.env.TRAVIS) {
   customLaunchers = {
     Chrome_travis_ci: {
       base: 'Chrome',
-      flags: ['--no-sandbox'],
-    },
+      flags: ['--no-sandbox']
+    }
   };
 } else {
   coverageReporters.push({ type: 'html', dir: 'coverage', subdir: '.' });
@@ -38,32 +38,32 @@ module.exports = function(config) {
     files: ['lib/purejs.min.js', 'test/**/*.js'],
     preprocessors: {
       'lib/purejs.min.js': ['coverage'],
-      'test/**/*.js': ['babel'],
+      'test/**/*.js': ['babel']
     },
     babelPreprocessor: {
       options: { presets: ['env'], sourceMap: 'inline' },
-      filename: function(file) {
+      filename(file) {
         return file.originalPath.replace(/\.js$/, '.es5.js');
       },
-      sourceFileName: function(file) {
+      sourceFileName(file) {
         return file.originalPath;
-      },
+      }
     },
-    reporters: reporters,
+    reporters,
     coverageReporter: { reporters: coverageReporters },
     logLevel: config.LOG_ERROR,
     port: 9876,
     colors: true,
     autoWatch: true,
-    browsers: browsers,
+    browsers,
     singleRun: true,
     concurrency: Infinity,
     client: {
       chai: {
-        includeStack: true,
-      },
+        includeStack: true
+      }
     },
-    customLaunchers: customLaunchers,
-    plugins: plugins,
+    customLaunchers,
+    plugins
   });
 };
