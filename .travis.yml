@@ -4,9 +4,10 @@ git:
 branches:
   only:
     - master
+    - development
 language: node_js
 node_js:
-  - 'stable'
+  - '8'
 before_install:
   # help Travis to use Chrome
   - export CHROME_BIN=chromium-browser

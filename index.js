@@ -1,4 +1,4 @@
-import cookies, { getPolicyCookie, addPolicyCookie, removePolicyCookie } from './src/cookies';
+import cookies from './src/cookies';
 import debounce from './src/debounce';
 import events from './src/events';
 import forEach from './src/forEach';
@@ -9,9 +9,6 @@ import touchable from './src/touchable';
 
 const purejs = {
   cookies,
-  getPolicyCookie,
-  addPolicyCookie,
-  removePolicyCookie,
   debounce,
   events,
   forEach,
@@ -23,9 +20,6 @@ const purejs = {
 
 export {
   cookies,
-  getPolicyCookie,
-  addPolicyCookie,
-  removePolicyCookie,
   debounce,
   events,
   forEach,
