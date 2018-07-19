@@ -1,5 +1,5 @@
 # PureJS
-
+![Release version](https://img.shields.io/github/release/runroom/purejs.svg)
 [![Build Status](https://travis-ci.org/Runroom/purejs.svg?branch=master)](https://travis-ci.org/Runroom/purejs.svg)
 [![Coverage Status](https://coveralls.io/repos/github/Runroom/purejs/badge.svg?branch=master)](https://img.shields.io/coveralls/github/Runroom/purejs/master.svg)
 [![Dependency Status](https://dependencyci.com/github/Runroom/purejs/badge)](https://dependencyci.com/github/Runroom/purejs)
