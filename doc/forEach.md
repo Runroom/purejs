@@ -10,7 +10,7 @@ Wrapper of the _for_ loop for better performance
 import { forEach } from '@runroom/purejs';
 
 // Usage
-forEach(haystack, index => {
+forEach(haystack, needle => {
   // Your awesome code
 });
 ```
