@@ -3,4 +3,5 @@ export default function touchable(container = document.documentElement) {
     'ontouchstart' in window || window.navigator.maxTouchPoints > 0 || window.navigator.msMaxTouchPoints > 0;
   const touchClass = touchsupport ? 'touch' : 'non-touch';
   container.classList.add(touchClass);
+  return touchsupport;
 }
