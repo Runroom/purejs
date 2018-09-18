@@ -35,13 +35,13 @@ module.exports = function(config) {
   config.set({
     basePath: '',
     frameworks: ['mocha', 'sinon-chai', 'chai'],
-    files: ['lib/purejs.min.js', 'test/**/*.js'],
+    files: ['./purejs.min.js', 'test/**/*.js'],
     preprocessors: {
-      'lib/purejs.min.js': ['coverage'],
+      './purejs.min.js': ['coverage'],
       'test/**/*.js': ['babel']
     },
     babelPreprocessor: {
-      options: { presets: ['env'], sourceMap: 'inline' },
+      options: { presets: ['@babel/preset-env'], sourceMap: 'inline' },
       filename(file) {
         return file.originalPath.replace(/\.js$/, '.es5.js');
       },
