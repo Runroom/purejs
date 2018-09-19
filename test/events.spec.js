@@ -3,7 +3,7 @@ describe('Events behavior', () => {
     it('function should be called on document ready', done => {
       const foo = { bar: () => {} };
       sinon.spy(foo, 'bar');
-      purejs.events.onDocumentReady(() => {
+      purejs.default.events.onDocumentReady(() => {
         foo.bar('baz');
       });
       foo.bar.should.have.been.calledWith('baz');
@@ -15,15 +15,22 @@ describe('Events behavior', () => {
     it('function should be called on resize', done => {
       const foo = { bar: () => {} };
       sinon.spy(foo, 'bar');
-      purejs.events.onResize(() => {
+
+      const clock = sinon.useFakeTimers();
+
+      purejs.default.events.onResize(() => {
         foo.bar('baz');
       });
-      window.innerWidth = window.innerWidth - 100;
+
+      window.innerWidth -= 100;
       window.dispatchEvent(new Event('resize'));
-      setTimeout(() => {
-        foo.bar.should.have.been.calledWith('baz');
-        done();
-      }, 150);
+
+      clock.tick(150);
+
+      foo.bar.should.have.been.calledWith('baz');
+
+      clock.restore();
+      done();
     });
   });
 });

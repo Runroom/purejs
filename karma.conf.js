@@ -1,5 +1,7 @@
 // Karma configuration
 // Generated on Wed Jan 10 2018 09:56:25 GMT+0100 (CET)
+const puppeteer = require('puppeteer');
+
 const plugins = [
   'istanbul-instrumenter-loader',
   'karma-babel-preprocessor',
@@ -13,8 +15,9 @@ const plugins = [
 ];
 const coverageReporters = [{ type: 'text-summary' }];
 const reporters = ['mocha', 'coverage'];
+process.env.CHROME_BIN = puppeteer.executablePath();
 
-let browsers = ['Chrome'];
+let browsers = ['ChromeHeadless'];
 let customLaunchers = {};
 
 if (process.env.TRAVIS) {
@@ -35,13 +38,16 @@ module.exports = function(config) {
   config.set({
     basePath: '',
     frameworks: ['mocha', 'sinon-chai', 'chai'],
-    files: ['./purejs.min.js', 'test/**/*.js'],
+    files: ['purejs.min.js', 'test/**/*.js'],
     preprocessors: {
-      './purejs.min.js': ['coverage'],
+      'purejs.min.js': ['coverage'],
       'test/**/*.js': ['babel']
     },
     babelPreprocessor: {
-      options: { presets: ['@babel/preset-env'], sourceMap: 'inline' },
+      options: {
+        presets: ['@babel/preset-env'],
+        sourceMap: 'inline'
+      },
       filename(file) {
         return file.originalPath.replace(/\.js$/, '.es5.js');
       },

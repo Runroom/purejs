@@ -13,6 +13,15 @@ module.exports = {
       globalReturn: true
     }
   },
+  overrides: [
+    {
+      files: '*.spec.js',
+      rules: {
+        'no-unused-expressions': 'off',
+        'no-undef': 'off'
+      }
+    }
+  ],
   parser: 'babel-eslint',
   globals: {
     document: false,
@@ -23,8 +32,10 @@ module.exports = {
     location: false,
     describe: true,
     before: true,
+    after: true,
     it: true,
     expect: true,
-    sinon: true
+    sinon: true,
+    purejs: true
   }
 };

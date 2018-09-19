@@ -1,41 +1,45 @@
 describe('Debounce behavior', () => {
-  it('function should be called 99 (luftballons 😜 ) times', done => {
-    const baz = { bar: () => {} };
+  it('function should be called 5 times', done => {
+    const baz = {
+      bar: () => {}
+    };
     sinon.spy(baz, 'bar');
 
-    window.addEventListener('resize', () => {
-      baz.bar();
-    });
+    const clock = sinon.useFakeTimers();
+    const func = baz.bar;
 
-    for (let i = 1; i < 100; i++) {
-      window.innerWidth = i * 100;
-      window.dispatchEvent(new Event('resize'));
-    }
-    setTimeout(() => {
-      baz.bar.should.have.been.callCount(99);
-      done();
-    }, 300);
+    func();
+    func();
+    func();
+    func();
+    func();
+
+    clock.tick(600);
+    baz.bar.should.have.been.callCount(5);
+
+    clock.restore();
+    done();
   });
 
   it('function should be called once', done => {
-    const foo = { bar: () => {} };
+    const baz = {
+      bar: () => {}
+    };
+    sinon.spy(baz, 'bar');
 
-    sinon.spy(foo, 'bar');
+    const clock = sinon.useFakeTimers();
+    const func = purejs.default.debounce(baz.bar);
 
-    window.addEventListener(
-      'resize',
-      purejs.debounce(() => {
-        foo.bar();
-      }, 200)
-    );
+    func();
+    func();
+    func();
+    func();
+    func();
 
-    for (let i = 1; i < 100; i++) {
-      window.innerWidth = i * 100;
-      window.dispatchEvent(new Event('resize'));
-    }
-    setTimeout(() => {
-      foo.bar.should.have.been.calledOnce;
-      done();
-    }, 300);
+    clock.tick(600);
+    baz.bar.should.have.been.callCount(1);
+
+    clock.restore();
+    done();
   });
 });

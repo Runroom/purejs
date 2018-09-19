@@ -30,6 +30,7 @@
     "build": "npm run build:browser && npm run build:node",
     "pretest": "npm run lint && npm run build",
     "test": "karma start",
+    "test:dev": "karma start",
     "updeps": "ncu"
   },
   "devDependencies": {
@@ -50,7 +51,7 @@
     "eslint-plugin-prettier": "2.6.2",
     "istanbul-instrumenter-loader": "3.0.1",
     "karma": "3.0.0",
-    "karma-babel-preprocessor": "7.0.0",
+    "karma-babel-preprocessor": "8.0.0-beta.0",
     "karma-chai": "0.1.0",
     "karma-chrome-launcher": "2.2.0",
     "karma-coverage": "1.1.2",
@@ -60,6 +61,7 @@
     "karma-sinon-chai": "2.0.2",
     "mocha": "5.2.0",
     "npm-check-updates": "2.14.2",
+    "puppeteer": "^1.8.0",
     "sinon": "6.3.4",
     "sinon-chai": "3.2.0",
     "uglifyjs-webpack-plugin": "2.0.1",
