@@ -3,7 +3,7 @@ import safeScrollTop from './safeScrollTop';
 let lastScrollTop = 0;
 let status = 0;
 
-export default function scrollDirection(deltaUp = 10, deltaDown = 10) {
+function scrollDirection(deltaUp = 10, deltaDown = 10) {
   const currentScrollTop = safeScrollTop() || 0;
 
   if (currentScrollTop <= 0) {
@@ -21,3 +21,5 @@ export default function scrollDirection(deltaUp = 10, deltaDown = 10) {
 
   return status;
 }
+
+export default scrollDirection;

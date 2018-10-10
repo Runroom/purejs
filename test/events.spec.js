@@ -18,7 +18,7 @@ describe('Events behavior', () => {
 
       const clock = sinon.useFakeTimers();
 
-      purejs.default.events.onResize(() => {
+      purejs.default.events.onResizeWidth(() => {
         foo.bar('baz');
       });
 
