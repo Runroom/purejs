@@ -5,6 +5,7 @@ branches:
   only:
     - master
     - development
+    - v3.0.0-rc
 language: node_js
 node_js:
   - '8'
