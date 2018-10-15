@@ -1,6 +1,6 @@
 // For a best approach to fix the header height
 // https://css-tricks.com/hash-tag-links-padding/
-import util from 'util';
+import * as util from 'util';
 import elementOffsetTop from './elementOffsetTop';
 import safeScrollTop from './safeScrollTop';
 

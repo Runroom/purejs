@@ -20,7 +20,7 @@ const minimizer = [
 
 const config = {
   entry: {
-    purejs: `${__dirname}/src/index.js`
+    purejs: `${__dirname}/src/index.ts`
   },
   mode: 'production',
   devtool: 'source-map',
@@ -34,14 +34,9 @@ const config = {
   module: {
     rules: [
       {
-        test: /(\.js)$/,
-        loader: 'babel-loader',
+        test: /(\.ts)$/,
+        loader: 'ts-loader',
         exclude: /(node_modules)/
-      },
-      {
-        test: /(\.js)$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
       }
     ]
   },
@@ -50,7 +45,7 @@ const config = {
   },
   resolve: {
     modules: [path.resolve('./src'), 'node_modules'],
-    extensions: ['.json', '.js']
+    extensions: ['.json', '.ts']
   },
   optimization: {
     minimizer
