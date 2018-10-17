@@ -4,7 +4,6 @@ describe('Safe scrollTop', () => {
       .anchorTo({ element: '#sample' })
       .then(() => {
         expect(purejs.default.safeScrollTop()).to.equal(document.querySelector('#sample').offsetTop);
-        purejs.default.anchorTo(0);
         done();
       })
       .catch(err => console.log(err));

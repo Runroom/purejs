@@ -4,26 +4,33 @@ import * as util from 'util';
 import elementOffsetTop from './elementOffsetTop';
 import isInt from './isInt';
 
+// for karma test
 require('util.promisify').shim();
 
-interface IAnchorTo {
+function anchorTo(
   opts: {
+    element: string | number;
     offset?: number;
-    element: [string, number]
-  };
-  callback:
-}
-
-function anchorTo(opts, callback): IAnchorTo {
+  },
+  callback?: (err?: any, value?: any) => void
+) {
   const offset = opts.offset || 0;
-  const targetTop = elementOffsetTop(opts.element);
-  if (!isInt(opts.element)) document.location.hash = opts.element;
+  const targetTop = elementOffsetTop(opts.element) as number;
+  if (!isInt(opts.element)) {
+    if (window && 'location' in window && 'hash' in window.location) {
+      window.location.hash = opts.element.toString();
+    }
+  }
 
   try {
     window.scrollTo(0, targetTop - offset);
-    callback(null, targetTop - offset);
+    if (callback) {
+      callback(null, targetTop - offset);
+    }
   } catch (error) {
-    callback(error.message, null);
+    if (callback) {
+      callback(error.message, null);
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 describe('Animate To', () => {
   beforeEach(() => {
-    purejs.default.anchorTo(0);
+    purejs.default.anchorTo({ element: 0 });
   });
 
   it('window offset should be on top of container', done => {

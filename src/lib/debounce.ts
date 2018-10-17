@@ -2,20 +2,33 @@
 // be triggered. The function will be called after it stops being called for
 // N milliseconds. If `immediate` is passed, trigger the function on the
 // leading edge, instead of the trailing.
-function debounce(callback, wait = 100, immediate) {
-  let timeout;
-  return function debounceFn(...args) {
+export type Procedure = (...args: any[]) => void;
+
+function debounce<F extends Procedure>(callback: F, waitMilliseconds = 50, isImmediate: false): F {
+  let timeoutId: any;
+
+  return function(this: any, ...args: any[]) {
     const context = this;
 
-    const later = () => {
-      timeout = null;
-      if (!immediate) callback.apply(context, args);
+    const doLater = function() {
+      timeoutId = undefined;
+      if (!isImmediate) {
+        callback.apply(context, args);
+      }
     };
-    const callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) callback.apply(context, args);
-  };
+
+    const shouldCallNow = isImmediate && timeoutId === undefined;
+
+    if (timeoutId !== undefined) {
+      clearTimeout(timeoutId);
+    }
+
+    timeoutId = setTimeout(doLater, waitMilliseconds);
+
+    if (shouldCallNow) {
+      callback.apply(context, args);
+    }
+  } as any;
 }
 
 export default debounce;

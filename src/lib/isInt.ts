@@ -1,2 +1,2 @@
-const isInt = n => Number(n) === n;
+const isInt = (n: any) => Number(n) === n;
 export default isInt;

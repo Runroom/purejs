@@ -45,7 +45,7 @@ const config = {
   },
   resolve: {
     modules: [path.resolve('./src'), 'node_modules'],
-    extensions: ['.json', '.ts']
+    extensions: ['.json', '.ts', '.js']
   },
   optimization: {
     minimizer

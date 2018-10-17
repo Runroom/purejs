@@ -1,0 +1,1 @@
+{"version":3,"file":"safeScrollTop.js","sourceRoot":"","sources":["../src/lib/safeScrollTop.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,OAAO,UAAU,aAAa;IACnC,OAAO,MAAM,CAAC,WAAW,KAAK,SAAS;QACrC,CAAC,CAAC,MAAM,CAAC,WAAW;QACpB,CAAC,CAAE,CAAC,QAAQ,CAAC,eAAe,IAAI,QAAQ,CAAC,IAAI,CAAC,UAAU,IAAI,QAAQ,CAAC,IAAI,CAAS,CAAC,SAAS,CAAC;AACjG,CAAC"}

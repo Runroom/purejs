@@ -2,9 +2,9 @@
  * https://jsperf.com/for-vs-foreach/37
  * https://coderwall.com/p/kvzbpa/don-t-use-array-foreach-use-for-instead
  */
-function forEach(haystack, callback, scope) {
+function forEach(haystack: any[], callback: () => void, scope?: void) {
   if (Object.prototype.toString.call(haystack) === '[object Object]') {
-    const keyHaystack = Object.keys(haystack);
+    const keyHaystack = Object.keys(haystack) as any[];
     for (let i = 0, len = keyHaystack.length; i < len; i += 1) {
       if (Object.prototype.hasOwnProperty.call(keyHaystack, i)) {
         callback.call(scope, haystack[keyHaystack[i]], keyHaystack[i], haystack);

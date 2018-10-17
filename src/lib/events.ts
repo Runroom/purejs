@@ -1,18 +1,18 @@
 function events() {
   // see: http://youmightnotneedjquery.com/#ready
-  function onDocumentReady(callback) {
-    const complete = document.readyState === 'complete';
-    const notLoading = document.readyState !== 'loading';
-    const ready = document.attachEvent ? complete : notLoading;
-    if (ready) {
-      callback();
-    } else {
-      document.addEventListener('DOMContentLoaded', callback);
+  function onDocumentReady(callback: () => void) {
+    const state = document.readyState;
+    if (state === 'complete' || state === 'interactive') {
+      return callback();
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      callback();
+    });
   }
 
-  function onResizeWidth(callback) {
-    let timer;
+  function onResizeWidth(callback: () => void) {
+    let timer: any;
     let windowWidth = window.innerWidth;
 
     window.addEventListener('resize', () => {
