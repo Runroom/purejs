@@ -1,7 +1,11 @@
-const setCookie = (name, value = 1, days = 365) => {
+const setCookie = (name, path, domain, secure, value = 1, days = 365) => {
   const d = new Date();
   d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
-  document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/`;
+  document.cookie = `${name}=${value}`;
+  document.cookie += (path ? `;path=${path}` : '');
+  document.cookie += (domain ? `;domain=${domain}` : '');
+  document.cookie += (secure ? ';secure' : '');
+  document.cookie += `;expires=${d.toUTCString()}`;
 };
 
 const getCookie = name => {
@@ -16,8 +20,12 @@ const getCookie = name => {
   return '';
 };
 
-const removeCookie = name => {
-  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+const removeCookie = (name, path, domain, secure) => {
+  document.cookie = `${name}=`;
+  document.cookie += (path ? `;path=${path}` : '');
+  document.cookie += (domain ? `;domain=${domain}` : '');
+  document.cookie += (secure ? ';secure' : '');
+  document.cookie += ';expires=Thu, 01 Jan 1970 00:00:00 UTC';
 };
 
 function cookies() {
