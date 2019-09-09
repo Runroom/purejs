@@ -1,5 +1,5 @@
 import path from 'path';
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+import terserWebpack from 'terser-webpack-plugin';
 import { argv } from 'yargs';
 
 const { env } = argv;
@@ -12,15 +12,17 @@ let mode = 'development';
 
 if (env === 'build') {
   minimizer.push(
-    new UglifyJsPlugin({
+    new terserWebpack({
       cache: false,
       parallel: true,
-      uglifyOptions: {
-        compress: true,
-        ecma: 6,
-        mangle: false
-      },
-      sourceMap: false
+      terserOptions: {
+        ecma: 8,
+        compress: { warnings: false },
+        output: {
+          comments: false,
+          beautify: false
+        }
+      }
     })
   );
   mode = 'production';
@@ -44,8 +46,15 @@ const config = {
     rules: [
       {
         test: /(\.jsx|\.js)$/,
-        loader: 'babel-loader',
-        exclude: /(node_modules)/
+        exclude: /(node_modules)/,
+        use: [
+          {
+            loader: 'babel-loader?cacheDirectory',
+            options: {
+              presets: ['@babel/env']
+            }
+          }
+        ]
       },
       {
         test: /(\.jsx|\.js)$/,
