@@ -16,7 +16,7 @@
   ],
   "main": "lib/purejs.min.js",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10"
   },
   "scripts": {
     "build": "webpack --env build",

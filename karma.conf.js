@@ -18,12 +18,12 @@ let browsers = ['Chrome'];
 let customLaunchers = {};
 
 if (process.env.TRAVIS) {
-  browsers = ['Chrome_travis_ci'];
+  browsers = ['Chrome', 'ChromeHeadless', 'ChromeHeadlessNoSandbox'];
   reporters.push('coveralls');
   coverageReporters.push({ type: 'lcov', dir: 'coverage' });
   customLaunchers = {
-    Chrome_travis_ci: {
-      base: 'Chrome',
+    ChromeHeadlessNoSandbox: {
+      base: 'ChromeHeadless',
       flags: ['--no-sandbox']
     }
   };
