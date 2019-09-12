@@ -41,7 +41,7 @@ module.exports = function(config) {
       'test/**/*.js': ['babel']
     },
     babelPreprocessor: {
-      options: { presets: ['env'], sourceMap: 'inline' },
+      options: { presets: ['@babel/env'], sourceMap: 'inline' },
       filename(file) {
         return file.originalPath.replace(/\.js$/, '.es5.js');
       },
