@@ -18,12 +18,12 @@ let browsers = ['Chrome'];
 let customLaunchers = {};
 
 if (process.env.TRAVIS) {
-  browsers = ['Chrome_travis_ci'];
+  browsers = ['Chrome', 'ChromeHeadless', 'ChromeHeadlessNoSandbox'];
   reporters.push('coveralls');
   coverageReporters.push({ type: 'lcov', dir: 'coverage' });
   customLaunchers = {
-    Chrome_travis_ci: {
-      base: 'Chrome',
+    ChromeHeadlessNoSandbox: {
+      base: 'ChromeHeadless',
       flags: ['--no-sandbox']
     }
   };
@@ -41,7 +41,7 @@ module.exports = function(config) {
       'test/**/*.js': ['babel']
     },
     babelPreprocessor: {
-      options: { presets: ['env'], sourceMap: 'inline' },
+      options: { presets: ['@babel/env'], sourceMap: 'inline' },
       filename(file) {
         return file.originalPath.replace(/\.js$/, '.es5.js');
       },
