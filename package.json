@@ -14,7 +14,7 @@
     "library",
     "no-jquery"
   ],
-  "main": "lib/purejs.min.js",
+  "main": "purejs.min.js",
   "typings": "typings.d.ts",
   "engines": {
     "node": ">=12.13.0"
