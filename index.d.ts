@@ -8,17 +8,12 @@ declare const purejs: {
     anchorTo: (arg1: {
         element: string | number;
         offset?: number | undefined;
-    }, arg2: ((err?: any, value?: any) => void) | undefined) => Promise<{}>;
+    }) => Promise<any>;
     animateTo: (arg1: {
         element: string | number;
         offset?: number | undefined;
         speed?: number | undefined;
-    }, arg2: ((err?: any, value?: any) => void) | undefined) => Promise<{}>;
-    cookies: {
-        get: (name: string) => string;
-        set: (name: string, value?: string | number, days?: number) => void;
-        remove: (name: string) => void;
-    };
+    }) => Promise<any>;
     debounce: typeof debounce;
     elementOffsetTop: typeof elementOffsetTop;
     events: {
@@ -26,7 +21,9 @@ declare const purejs: {
         onResizeWidth: (callback: () => void) => void;
     };
     forEach: typeof forEach;
+    isExplorer: () => boolean;
     isInt: (n: any) => boolean;
+    isNan: (n: any) => boolean;
     safeScrollTop: typeof safeScrollTop;
     scrollDirection: typeof scrollDirection;
     touchable: typeof touchable;
