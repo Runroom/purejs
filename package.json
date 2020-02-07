@@ -15,22 +15,21 @@
     "no-jquery"
   ],
   "main": "purejs.min.js",
-  "typings": "typings.d.ts",
+  "typings": "index.d.ts",
   "engines": {
     "node": ">=12.13.0"
   },
   "scripts": {
-    "clean:node": "rm -rf index.js lib",
+    "clean:node": "rm -rf index.min.js lib/*",
     "clean:browser": "rm -rf validator*.js",
-    "clean": "npm run clean:node && npm run clean:browser",
+    "clean": "yarn clean:node && yarn clean:browser",
     "minify": "uglifyjs validator.js -o validator.min.js  --compress --mangle --comments /Copyright/",
     "build:browser": "webpack",
     "build:node": "tsc",
-    "build": "npm run build:browser && npm run build:node",
-    "pretest": "npm run build",
+    "build": "yarn build:browser && yarn build:node",
+    "pretest": "yarn build",
     "test": "karma start",
-    "test:dev": "karma start",
-    "updeps": "ncu"
+    "test:dev": "karma start"
   },
   "dependencies": {
     "@types/node": "13.7.0",
