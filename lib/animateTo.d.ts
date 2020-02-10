@@ -1,6 +1,6 @@
-declare const _default: (arg1: {
+declare function animateTo(opts: {
     element: string | number;
-    offset?: number | undefined;
-    speed?: number | undefined;
-}) => Promise<any>;
-export default _default;
+    offset?: number;
+    speed?: number;
+}, callback?: (err?: any, value?: any) => void): Promise<void>;
+export default animateTo;

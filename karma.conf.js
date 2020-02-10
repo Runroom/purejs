@@ -4,6 +4,7 @@ const puppeteer = require('puppeteer');
 
 const plugins = [
   'istanbul-instrumenter-loader',
+  'karma-coverage-istanbul-reporter',
   'karma-babel-preprocessor',
   'karma-chai',
   'karma-chrome-launcher',
@@ -11,10 +12,11 @@ const plugins = [
   'karma-coveralls',
   'karma-mocha',
   'karma-mocha-reporter',
-  'karma-sinon-chai'
+  'karma-sinon-chai',
+  'karma-webpack'
 ];
 const coverageReporters = [{ type: 'text-summary' }];
-const reporters = ['mocha', 'coverage'];
+const reporters = ['coverage-istanbul', 'mocha', 'coverage'];
 process.env.CHROME_BIN = puppeteer.executablePath();
 
 let browsers = ['ChromeHeadless'];
@@ -41,19 +43,13 @@ module.exports = function(config) {
     files: ['purejs.min.js', 'test/**/*.js'],
     preprocessors: {
       'purejs.min.js': ['coverage'],
-      'test/**/*.js': ['babel']
+      'test/**/*.js': ['webpack']
     },
-    babelPreprocessor: {
-      options: {
-        presets: ['@babel/preset-env'],
-        sourceMap: 'inline'
-      },
-      filename(file) {
-        return file.originalPath.replace(/\.js$/, '.es5.js');
-      },
-      sourceFileName(file) {
-        return file.originalPath;
-      }
+    webpack: {
+      mode: 'development'
+    },
+    webpackMiddleware: {
+      stats: 'minimal'
     },
     reporters,
     coverageReporter: { reporters: coverageReporters },

@@ -16,4 +16,4 @@ pure-js*.tgz
 
 # KARMA
 build
-coverage
+coverage*

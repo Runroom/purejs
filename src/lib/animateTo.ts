@@ -1,11 +1,8 @@
 // For a best approach to fix the header height
 // https://css-tricks.com/hash-tag-links-padding/
-import * as util from 'util';
 import elementOffsetTop from './elementOffsetTop';
 import safeScrollTop from './safeScrollTop';
-
-// for karma test
-require('util.promisify').shim();
+import isNan from './isNan';
 
 /**
  * t = current time
@@ -20,7 +17,7 @@ const easeInOutQuad = (t: number, b: number, c: number, d: number) => {
   return (-c / 2) * (currentTime * (currentTime - 2) - 1) + b;
 };
 
-function animateTo(
+async function animateTo(
   opts: {
     element: string | number;
     offset?: number;
@@ -37,6 +34,10 @@ function animateTo(
   let currentTime = 0;
 
   try {
+    if (isNan(change)) {
+      throw `The element doesn't exists or is not a number`;
+    }
+
     (function animateScroll() {
       currentTime += increment;
       const val = easeInOutQuad(currentTime, start, change, speed);
@@ -44,14 +45,12 @@ function animateTo(
       if (currentTime < speed) {
         setTimeout(animateScroll, increment);
       } else if (callback) {
-        callback(null, opts.element);
+        callback(null, val);
       }
     })();
   } catch (error) {
-    if (callback) {
-      callback(error.message, null);
-    }
+    throw error;
   }
 }
 
-export default util.promisify(animateTo);
+export default animateTo;

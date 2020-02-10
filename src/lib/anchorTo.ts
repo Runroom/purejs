@@ -1,13 +1,9 @@
 // For a best approach to fix the header height
 // https://css-tricks.com/hash-tag-links-padding/
-import * as util from 'util';
 import elementOffsetTop from './elementOffsetTop';
 import isInt from './isInt';
 
-// for karma test
-require('util.promisify').shim();
-
-function anchorTo(
+async function anchorTo(
   opts: {
     element: string | number;
     offset?: number;
@@ -23,7 +19,7 @@ function anchorTo(
   }
 
   try {
-    window.scrollTo(0, targetTop - offset);
+    await window.scrollTo(0, targetTop - offset);
     if (callback) {
       callback(null, targetTop - offset);
     }
@@ -34,4 +30,5 @@ function anchorTo(
   }
 }
 
-export default util.promisify(anchorTo);
+// export default util.promisify(anchorTo);
+export default anchorTo;
