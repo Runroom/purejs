@@ -14,13 +14,13 @@
     "library",
     "no-jquery"
   ],
-  "main": "purejs.min.js",
+  "main": "purejs.js",
   "typings": "index.d.ts",
   "engines": {
     "node": ">=12.13.0"
   },
   "scripts": {
-    "clean:node": "rm -rf index.min.js lib/*",
+    "clean:node": "rm -rf index.js lib/*",
     "clean:browser": "rm -rf validator*.js",
     "clean": "yarn clean:node && yarn clean:browser",
     "minify": "uglifyjs validator.js -o validator.min.js  --compress --mangle --comments /Copyright/",
