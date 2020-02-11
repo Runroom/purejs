@@ -1,7 +1,9 @@
-import path from "path";
-import TerserWebpack from "terser-webpack-plugin";
+import path from 'path';
+import TerserWebpack from 'terser-webpack-plugin';
+// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-const libraryName = "purejs";
+const libraryName = 'purejs';
+// const plugins = [new BundleAnalyzerPlugin()];
 const plugins = [];
 const minimizer = [
   new TerserWebpack({
@@ -21,32 +23,38 @@ const minimizer = [
 
 const config = {
   entry: {
-    purejs: `${__dirname}/src/index.ts`
+    purejs: `${__dirname}/src/index.ts`,
+    'lib/animate2': `${__dirname}/src/lib/animateTo.ts`
   },
-  mode: "production",
-  devtool: "source-map",
+  mode: 'production',
+  devtool: 'source-map',
   output: {
     path: `${__dirname}`,
     filename: `[name].min.js`,
     library: libraryName,
-    libraryTarget: "umd",
+    libraryTarget: 'umd',
     umdNamedDefine: true
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
   },
   module: {
     rules: [
       {
         test: /(\.ts)$/,
-        loader: "ts-loader",
+        loader: 'ts-loader',
         exclude: /(node_modules)/
       }
     ]
   },
   resolveLoader: {
-    modules: ["node_modules"]
+    modules: ['node_modules']
   },
   resolve: {
-    modules: [path.resolve("./src"), "node_modules"],
-    extensions: [".json", ".ts", ".js"]
+    modules: [path.resolve('./src'), 'node_modules'],
+    extensions: ['.json', '.ts', '.js']
   },
   optimization: {
     minimizer

@@ -24,7 +24,7 @@
     "clean:browser": "rm -rf validator*.js",
     "clean": "yarn clean:node && yarn clean:browser",
     "minify": "uglifyjs validator.js -o validator.min.js  --compress --mangle --comments /Copyright/",
-    "build:browser": "webpack",
+    "build:browser": "webpack -p --mode=production",
     "build:node": "tsc",
     "build": "yarn build:browser && yarn build:node",
     "pretest": "yarn build",
@@ -74,6 +74,7 @@
     "typescript": "3.7.5",
     "util": "^0.12.1",
     "webpack": "4.41.5",
+    "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "3.3.10",
     "yargs": "15.1.0"
   },
