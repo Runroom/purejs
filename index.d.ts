@@ -13,7 +13,7 @@ declare const purejs: {
     elementOffsetTop: typeof elementOffsetTop;
     events: {
         onDocumentReady: (callback: () => void) => void;
-        onResizeWidth: (callback: () => void) => void;
+        onResizeWidth: (callback: (windowWidth: number) => void) => void;
     };
     forEach: typeof forEach;
     isExplorer: () => boolean;

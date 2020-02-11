@@ -11,7 +11,7 @@ function events() {
     });
   }
 
-  function onResizeWidth(callback: () => void) {
+  function onResizeWidth(callback: (windowWidth: number) => void) {
     let timer: any;
     let windowWidth = window.innerWidth;
 
@@ -19,7 +19,9 @@ function events() {
       if (windowWidth !== window.innerWidth) {
         windowWidth = window.innerWidth;
         if (timer) clearTimeout(timer);
-        timer = setTimeout(callback, 100);
+        timer = setTimeout(() => {
+          callback(windowWidth);
+        }, 100);
       }
     });
   }
