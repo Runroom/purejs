@@ -24,13 +24,11 @@
     "clean:browser": "rm -rf validator*.js",
     "clean": "yarn clean:node && yarn clean:browser",
     "minify": "uglifyjs validator.js -o validator.min.js  --compress --mangle --comments /Copyright/",
-    "build:browser": "webpack -p --mode=production",
     "build:node": "tsc",
-    "build": "yarn build:browser && yarn build:node",
+    "dev": "webpack --mode=development",
+    "build": "webpack -p --mode=production",
     "pretest": "yarn build",
-    "test": "karma start",
-    "test:dev": "karma start",
-    "test2": "mocha"
+    "test": "karma start"
   },
   "dependencies": {
     "@types/node": "13.7.0",

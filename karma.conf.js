@@ -40,9 +40,9 @@ module.exports = function(config) {
   config.set({
     basePath: '',
     frameworks: ['mocha', 'sinon-chai', 'chai'],
-    files: ['purejs.min.js', 'test/**/*.js'],
+    files: ['purejs.js', 'test/**/*.js'],
     preprocessors: {
-      'purejs.min.js': ['coverage'],
+      'purejs.js': ['coverage'],
       'test/**/*.js': ['webpack']
     },
     webpack: {
