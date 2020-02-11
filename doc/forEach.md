@@ -7,7 +7,7 @@
 Wrapper of the _for_ loop for better performance
 
 ```javascript
-import { forEach } from '@runroom/purejs';
+import forEach from '@runroom/purejs/lib/forEach';
 
 // Usage
 forEach(haystack, index => {

@@ -3,7 +3,7 @@
 Adds classes to the `documentElement` on scroll up or down. You can define the delta when it will be executed, from both sides.
 
 ```javascript
-import { scrollDirection } from '@runroom/purejs';
+import scrollDirection from '@runroom/purejs/lib/scrollDirection';
 
 // Default settings
 const settings = {
@@ -14,9 +14,9 @@ const settings = {
 };
 ```
 
-| Setting | Description |
-| ------- |:------------|
-| deltaUp | `{integer}` Delta of the window top where the function will be triggered |
+| Setting   | Description                                                                 |
+| --------- | :-------------------------------------------------------------------------- |
+| deltaUp   | `{integer}` Delta of the window top where the function will be triggered    |
 | deltaDown | `{integer}` Delta of the window bottom where the function will be triggered |
-| classUp | `{string}` The class to be added on scroll up |
-| classDown | `{string}` The class to be added on scroll down |
+| classUp   | `{string}` The class to be added on scroll up                               |
+| classDown | `{string}` The class to be added on scroll down                             |

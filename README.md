@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/Runroom/purejs.svg?branch=master)](https://travis-ci.org/Runroom/purejs.svg)
 [![Coverage Status](https://coveralls.io/repos/github/Runroom/purejs/badge.svg?branch=master)](https://img.shields.io/coveralls/github/Runroom/purejs/master.svg)
-[![Dependency Status](https://dependencyci.com/github/Runroom/purejs/badge)](https://dependencyci.com/github/Runroom/purejs)
 
 PureJS is a pack of pure javascript, non-jquery, functions exported as [Node.js](https://nodejs.org/) modules.
 
@@ -17,27 +16,21 @@ $ yarn add @runroom/purejs
 Use it importing the whole library or the methods you need
 
 ```javascript
-import { cookies, events } from '@runroom/purejs'
+import events from '@runroom/purejs/lib/events'
 
 events.onDocumentReady(() => {
-  cookies.get('mycookie');
-});
-
-// or
-import purejs from '@runroom/purejs';
-
-purejs.events.onDocumentReady(() => {
-  purejs.cookies.get('mycookie');
+  // your code
 });
 ```
 
 ## Supported modules
 
-* [Cookies](./doc/cookies.md)
-* [Debounce](./doc/debounce.md)
-* [Events](./doc/events.md)
-* [ForEach](./forEach.md)
-* [SafeScrollTop](./doc/safeScrollTop.md)
-* [ScrollDirection](./doc/scrollDirection.md)
-* [ScrollTo](./doc/scrollTo.md)
-* [Touchable](./doc/touchable.md)
+* [anchorTo](./doc/anchorTo.md)
+* [animateTo](./doc/animateTo.md)
+* [~~cookies~~ (Deprecated)](./doc/cookies.md)
+* [debounce](./doc/debounce.md)
+* [events](./doc/events.md)
+* [forEach](./forEach.md)
+* [safeScrollTop](./doc/safeScrollTop.md)
+* [scrollDirection](./doc/scrollDirection.md)
+* [touchable](./doc/touchable.md)
