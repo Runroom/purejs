@@ -61,18 +61,14 @@ describe('Anchor To', () => {
       });
   });
 
-  // it('should throw an error', async done => {
-  // const res = await purejs.default.anchorTo({ element: 'nonsense' });
-  // console.log(purejs.default.anchorTo({ element: 'nonsense' }));
-  // done();
-  // .then((err, val) => {
-  //   console.log('Enters', err, val);
-  //   done();
-  // })
-  // .catch(err => {
-  //   expect(err).to.equal('Some error');
-  //   console.log(`Error: ${err}`);
-  //   done();
-  // });
-  // });
+  it('should throw an error', done => {
+    try {
+      purejs.default.anchorTo({ element: 'nonsense' }).catch(err => {
+        expect(err).to.equal(`The element doesn't exists or is not a number`);
+        done();
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  });
 });

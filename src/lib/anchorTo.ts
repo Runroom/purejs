@@ -2,6 +2,7 @@
 // https://css-tricks.com/hash-tag-links-padding/
 import elementOffsetTop from './elementOffsetTop';
 import isInt from './isInt';
+import isNan from './isNan';
 
 async function anchorTo(
   opts: {
@@ -11,24 +12,32 @@ async function anchorTo(
   callback?: (err?: any, value?: any) => void
 ) {
   const offset = opts.offset || 0;
-  const targetTop = elementOffsetTop(opts.element) as number;
-  if (!isInt(opts.element)) {
-    if (window && 'location' in window && 'hash' in window.location) {
-      window.location.hash = opts.element.toString();
-    }
-  }
 
   try {
-    await window.scrollTo(0, targetTop - offset);
+    const targetTop = elementOffsetTop(opts.element) as number;
+    const totalOffset = targetTop - offset;
+
+    if (isNan(totalOffset)) {
+      throw `The element doesn't exists or is not a number`;
+    }
+
+    if (!isInt(opts.element)) {
+      if (window && 'location' in window && 'hash' in window.location) {
+        window.location.hash = opts.element.toString();
+      }
+    }
+
+    await window.scrollTo(0, totalOffset);
     if (callback) {
-      callback(null, targetTop - offset);
+      callback(null, totalOffset);
     }
   } catch (error) {
     if (callback) {
       callback(error.message, null);
     }
+
+    throw error;
   }
 }
 
-// export default util.promisify(anchorTo);
 export default anchorTo;
