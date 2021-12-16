@@ -80,6 +80,6 @@
     "minimist": "1.2.5"
   },
   "peerDependencies": {
-    "prettier": "2.0.3"
+    "prettier": ">=2"
   }
 }
