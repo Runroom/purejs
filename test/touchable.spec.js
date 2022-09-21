@@ -1,6 +1,5 @@
 describe('Touchable behavior', () => {
-  it('should return false', done => {
-    expect(purejs.default.touchable()).is.not.ok;
-    done();
+  it('should return false', () => {
+    expect(purejs.touchable()).toBeFalsy();
   });
 });

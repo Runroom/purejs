@@ -3,26 +3,26 @@ module.exports = {
   plugins: ['import', 'prettier'],
   env: {
     es6: true,
-    node: true
+    node: true,
   },
   parserOptions: {
     ecmaVersion: 2016,
     sourceType: 'module',
     ecmaFeatures: {
       impliedStrict: true,
-      globalReturn: true
-    }
+      globalReturn: true,
+    },
   },
   overrides: [
     {
       files: '*.spec.js',
       rules: {
         'no-unused-expressions': 'off',
-        'no-undef': 'off'
-      }
-    }
+        'no-undef': 'off',
+      },
+    },
   ],
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   globals: {
     document: false,
     escape: false,
@@ -36,6 +36,6 @@ module.exports = {
     it: true,
     expect: true,
     sinon: true,
-    purejs: true
-  }
+    purejs: true,
+  },
 };

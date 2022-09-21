@@ -6,7 +6,6 @@ const libraryName = 'purejs';
 const plugins = [];
 const minimizer = [
   new TerserWebpack({
-    cache: true,
     parallel: true,
     extractComments: false,
     terserOptions: {
@@ -14,27 +13,27 @@ const minimizer = [
       compress: { warnings: false },
       output: {
         comments: false,
-        beautify: false
-      }
-    }
-  })
+        beautify: false,
+      },
+    },
+  }),
 ];
 
 const config = {
   entry: {
-    purejs: `${__dirname}/src/index.ts`,
-    'lib/anchorTo': `${__dirname}/src/lib/anchorTo.ts`,
-    'lib/animateTo': `${__dirname}/src/lib/animateTo.ts`,
-    'lib/debounce': `${__dirname}/src/lib/debounce.ts`,
-    'lib/elementOffsetTop': `${__dirname}/src/lib/elementOffsetTop.ts`,
-    'lib/events': `${__dirname}/src/lib/events.ts`,
-    'lib/forEach': `${__dirname}/src/lib/forEach.ts`,
-    'lib/isExplorer': `${__dirname}/src/lib/isExplorer.ts`,
-    'lib/isInt': `${__dirname}/src/lib/isInt.ts`,
-    'lib/isNan': `${__dirname}/src/lib/isNan.ts`,
-    'lib/safeScrollTop': `${__dirname}/src/lib/safeScrollTop.ts`,
-    'lib/scrollDirection': `${__dirname}/src/lib/scrollDirection.ts`,
-    'lib/touchable': `${__dirname}/src/lib/touchable.ts`
+    'dist/purejs': `${__dirname}/src/index.ts`,
+    'dist/lib/anchorTo': `${__dirname}/src/lib/anchorTo.ts`,
+    'dist/lib/animateTo': `${__dirname}/src/lib/animateTo.ts`,
+    'dist/lib/debounce': `${__dirname}/src/lib/debounce.ts`,
+    'dist/lib/elementOffsetTop': `${__dirname}/src/lib/elementOffsetTop.ts`,
+    'dist/lib/events': `${__dirname}/src/lib/events.ts`,
+    'dist/lib/forEach': `${__dirname}/src/lib/forEach.ts`,
+    'dist/lib/isExplorer': `${__dirname}/src/lib/isExplorer.ts`,
+    'dist/lib/isInt': `${__dirname}/src/lib/isInt.ts`,
+    'dist/lib/isNan': `${__dirname}/src/lib/isNan.ts`,
+    'dist/lib/safeScrollTop': `${__dirname}/src/lib/safeScrollTop.ts`,
+    'dist/lib/scrollDirection': `${__dirname}/src/lib/scrollDirection.ts`,
+    'dist/lib/touchable': `${__dirname}/src/lib/touchable.ts`,
   },
   mode: 'production',
   devtool: 'source-map',
@@ -43,30 +42,30 @@ const config = {
     filename: `[name].js`,
     library: libraryName,
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    umdNamedDefine: true,
   },
   optimization: {
     minimizer,
     splitChunks: {
-      chunks: 'all'
-    }
+      chunks: 'all',
+    },
   },
   module: {
     rules: [
       {
         test: /(\.ts)$/,
         loader: 'ts-loader',
-        exclude: /(node_modules)/
-      }
-    ]
+        exclude: /(node_modules)/,
+      },
+    ],
   },
   resolveLoader: {
-    modules: ['node_modules']
+    modules: ['node_modules'],
   },
   resolve: {
     modules: [path.resolve('./src'), 'node_modules'],
-    extensions: ['.json', '.ts', '.js']
-  }
+    extensions: ['.json', '.ts', '.js'],
+  },
 };
 
 module.exports = (env, argv) => {
