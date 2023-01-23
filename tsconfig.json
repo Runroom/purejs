@@ -4,7 +4,7 @@
     "module": "es6",
     "declaration": true,
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "./",
     "strict": true,
     "types": ["node"],
     "typeRoots": ["node_modules/@types"]
