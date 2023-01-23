@@ -28,7 +28,7 @@ function events() {
 
   return {
     onDocumentReady,
-    onResizeWidth
+    onResizeWidth,
   };
 }
 

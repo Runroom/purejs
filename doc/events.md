@@ -3,15 +3,15 @@
 Creates safe event listeners of the Dom.
 
 ```javascript
-import events from '@runroom/purejs/lib/events';
+import events from "@runroom/purejs/lib/events";
 
 // Usage
 events.onDocumentReady(() => {
-  // Your awesome code
+    // Your awesome code
 });
 
 events.onResizeWidth(() => {
-  // Your awesome code
+    // Your awesome code
 });
 ```
 

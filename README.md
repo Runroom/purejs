@@ -1,7 +1,11 @@
 # PureJS
 
-[![Build Status](https://travis-ci.org/Runroom/purejs.svg?branch=master)](https://travis-ci.org/Runroom/purejs.svg)
-[![Coverage Status](https://coveralls.io/repos/github/Runroom/purejs/badge.svg?branch=master)](https://img.shields.io/coveralls/github/Runroom/purejs/master.svg)
+[![npm version](https://img.shields.io/npm/v/@runroom/purejs.svg)](https://www.npmjs.com/package/@runroom/purejs)
+![node](https://img.shields.io/node/v/@runroom/purejs.svg)
+
+[![CI](https://github.com/Runroom/purejs/actions/workflows/ci.yaml/badge.svg)](https://github.com/Runroom/purejs/actions/workflows/ci.yaml)
+[![QA](https://github.com/Runroom/purejs/actions/workflows/qa.yaml/badge.svg)](https://github.com/Runroom/purejs/actions/workflows/qa.yaml)
+[![codecov](https://codecov.io/gh/Runroom/purejs/branch/3.x/graph/badge.svg)](https://codecov.io/gh/Runroom/purejs)
 
 PureJS is a pack of pure javascript, non-jquery, functions exported as [Node.js](https://nodejs.org/) modules.
 
@@ -10,27 +14,27 @@ PureJS is a pack of pure javascript, non-jquery, functions exported as [Node.js]
 Install the package as your project dependency
 
 ```bash
-$ yarn add @runroom/purejs
+npm install @runroom/purejs
 ```
 
 Use it importing the whole library or the methods you need
 
 ```javascript
-import events from '@runroom/purejs/lib/events'
+import events from "@runroom/purejs/lib/events";
 
 events.onDocumentReady(() => {
-  // your code
+    // your code
 });
 ```
 
 ## Supported modules
 
-* [anchorTo](./doc/anchorTo.md)
-* [animateTo](./doc/animateTo.md)
-* [~~cookies~~ (Deprecated)](./doc/cookies.md)
-* [debounce](./doc/debounce.md)
-* [events](./doc/events.md)
-* [forEach](./forEach.md)
-* [safeScrollTop](./doc/safeScrollTop.md)
-* [scrollDirection](./doc/scrollDirection.md)
-* [touchable](./doc/touchable.md)
+- [anchorTo](./doc/anchorTo.md)
+- [animateTo](./doc/animateTo.md)
+- [~~cookies~~ (Deprecated)](./doc/cookies.md)
+- [debounce](./doc/debounce.md)
+- [events](./doc/events.md)
+- [forEach](./forEach.md)
+- [safeScrollTop](./doc/safeScrollTop.md)
+- [scrollDirection](./doc/scrollDirection.md)
+- [touchable](./doc/touchable.md)

@@ -1,54 +1,54 @@
 describe('Events onDocumentReady', () => {
-  it('function should be called on document ready', done => {
+  it('function should be called on document ready', () => {
     const foo = { bar: () => {} };
-    sinon.spy(foo, 'bar');
-    purejs.default.events.onDocumentReady(() => {
+    const spiedFooBar = jest.spyOn(foo, 'bar');
+
+    purejs.events.onDocumentReady(() => {
       foo.bar('baz');
     });
-    foo.bar.should.have.been.calledWith('baz');
-    done();
+
+    expect(spiedFooBar).toHaveBeenCalledWith('baz');
   });
 });
 
 describe('Events onResizeWidth', () => {
-  it('function should be called on resize width', done => {
+  it('function should be called on resize width', () => {
     const foo = { bar: () => {} };
-    sinon.spy(foo, 'bar');
+    const spiedFooBar = jest.spyOn(foo, 'bar');
 
-    const clock = sinon.useFakeTimers();
+    jest.useFakeTimers();
 
-    purejs.default.events.onResizeWidth(() => {
+    purejs.events.onResizeWidth(() => {
       foo.bar('baz');
     });
 
     window.innerWidth -= 100;
     window.dispatchEvent(new Event('resize'));
 
-    clock.tick(150);
+    jest.advanceTimersByTime(150);
 
-    foo.bar.should.have.been.calledWith('baz');
+    expect(spiedFooBar).toHaveBeenCalledWith('baz');
 
-    clock.restore();
-    done();
+    jest.useRealTimers();
   });
 
-  it('function should not be called on resize height', done => {
+  it('function should not be called on resize height', () => {
     const foo = { bar: () => {} };
-    sinon.spy(foo, 'bar');
+    const spiedFooBar = jest.spyOn(foo, 'bar');
 
-    const clock = sinon.useFakeTimers();
+    jest.useFakeTimers();
 
-    purejs.default.events.onResizeWidth(() => {
+    purejs.events.onResizeWidth(() => {
       foo.bar('baz');
     });
 
     window.innerHeight -= 100;
     window.dispatchEvent(new Event('resize'));
 
-    clock.tick(150);
-    foo.bar.should.not.have.been.calledWith('baz');
+    jest.advanceTimersByTime(150);
 
-    clock.restore();
-    done();
+    expect(spiedFooBar).not.toHaveBeenCalledWith('baz');
+
+    jest.useRealTimers();
   });
 });

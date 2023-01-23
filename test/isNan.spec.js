@@ -1,11 +1,9 @@
 describe('Is NaN', () => {
-  it('should be a number', done => {
-    expect(purejs.default.isNan(30)).is.not.ok;
-    done();
+  it('should be a number', () => {
+    expect(purejs.isNan(30)).toBeFalsy();
   });
 
-  it('should not be number', done => {
-    expect(purejs.default.isNan(parseFloat('purejs'))).is.ok;
-    done();
+  it('should not be number', () => {
+    expect(purejs.isNan(parseFloat('purejs'))).toBeTruthy();
   });
 });

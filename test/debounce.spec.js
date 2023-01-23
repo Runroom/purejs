@@ -1,11 +1,11 @@
 describe('Debounce behavior', () => {
-  it('function should be called 5 times', done => {
+  it('function should be called 5 times', () => {
     const baz = {
-      bar: () => {}
+      bar: () => {},
     };
-    sinon.spy(baz, 'bar');
+    const spiedFooBar = jest.spyOn(baz, 'bar');
 
-    const clock = sinon.useFakeTimers();
+    jest.useFakeTimers();
     const func = baz.bar;
 
     func();
@@ -14,21 +14,21 @@ describe('Debounce behavior', () => {
     func();
     func();
 
-    clock.tick(600);
-    baz.bar.should.have.been.callCount(5);
+    jest.advanceTimersByTime(600);
 
-    clock.restore();
-    done();
+    expect(spiedFooBar).toHaveBeenCalledTimes(5);
+
+    jest.useRealTimers();
   });
 
-  it('function should be called once', done => {
+  it('function should be called once', () => {
     const baz = {
-      bar: () => {}
+      bar: () => {},
     };
-    sinon.spy(baz, 'bar');
+    const spiedFooBar = jest.spyOn(baz, 'bar');
 
-    const clock = sinon.useFakeTimers();
-    const func = purejs.default.debounce(baz.bar);
+    jest.useFakeTimers();
+    const func = purejs.debounce(baz.bar);
 
     func();
     func();
@@ -36,10 +36,10 @@ describe('Debounce behavior', () => {
     func();
     func();
 
-    clock.tick(600);
-    baz.bar.should.have.been.callCount(1);
+    jest.advanceTimersByTime(600);
 
-    clock.restore();
-    done();
+    expect(spiedFooBar).toHaveBeenCalledTimes(1);
+
+    jest.useRealTimers();
   });
 });

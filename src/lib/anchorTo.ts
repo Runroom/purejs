@@ -33,6 +33,7 @@ async function anchorTo(
     }
   } catch (error) {
     if (callback) {
+      // @ts-expect-error TS2571
       callback(error.message, null);
     }
 
