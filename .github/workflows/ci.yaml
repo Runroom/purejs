@@ -1,0 +1,21 @@
+name: CI
+
+on:
+    push:
+        branches: [3.x]
+    pull_request:
+
+jobs:
+    build:
+        name: Node ${{ matrix.node }}
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node: ["18.x"]
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node }}
+            - uses: bahmutov/npm-install@v1
+            - run: vendor/bin/phpunit

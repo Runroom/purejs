@@ -7,10 +7,10 @@ export type Procedure = (...args: any[]) => void;
 function debounce<F extends Procedure>(callback: F, waitMilliseconds = 50, isImmediate: false): F {
   let timeoutId: any;
 
-  return function(this: any, ...args: any[]) {
+  return function (this: any, ...args: any[]) {
     const context = this;
 
-    const doLater = function() {
+    const doLater = function () {
       timeoutId = undefined;
       if (!isImmediate) {
         callback.apply(context, args);

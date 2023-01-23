@@ -3,14 +3,14 @@
 Adds classes to the `documentElement` on scroll up or down. You can define the delta when it will be executed, from both sides.
 
 ```javascript
-import scrollDirection from '@runroom/purejs/lib/scrollDirection';
+import scrollDirection from "@runroom/purejs/lib/scrollDirection";
 
 // Default settings
 const settings = {
-  deltaUp: 10,
-  deltaDown: 10,
-  classUp: 'scroll-up',
-  classDown: 'scroll-down'
+    deltaUp: 10,
+    deltaDown: 10,
+    classUp: "scroll-up",
+    classDown: "scroll-down",
 };
 ```
 

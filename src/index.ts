@@ -23,7 +23,7 @@ const purejs = {
   isNan,
   safeScrollTop,
   scrollDirection,
-  touchable
+  touchable,
 };
 
 export default purejs;
