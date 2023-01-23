@@ -14,6 +14,14 @@
     "library",
     "no-jquery"
   ],
+  "files": [
+    "lib",
+    "index.d.ts",
+    "purejs.js",
+    "purejs.js.map",
+    "index.js",
+    "index.js.map"
+  ],
   "main": "purejs.js",
   "typings": "index.d.ts",
   "engines": {
@@ -29,6 +37,7 @@
     "lint:prettier": "prettier --check .github src test .eslintrc.js jest.config.ts webpack.config.babel.js",
     "lint:tsc": "tsc --noEmit --pretty false",
     "pretest": "run-p build:*",
+    "prerelease": "run-p build:*",
     "release": "changeset publish",
     "test": "jest"
   },
