@@ -1,4 +1,4 @@
-name: CI
+name: QA
 
 on:
     push:
@@ -18,4 +18,4 @@ jobs:
               with:
                   node-version: ${{ matrix.node }}
             - uses: bahmutov/npm-install@v1
-            - run: npm run test
+            - run: npm run lint
