@@ -9,3 +9,11 @@ pure-js*.tgz
 # KARMA
 build
 coverage*
+
+# PUREJS
+lib
+index.d.ts
+index.js
+index.js.map
+purejs.js
+purejs.js.map

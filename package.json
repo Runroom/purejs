@@ -14,8 +14,8 @@
     "library",
     "no-jquery"
   ],
-  "main": "dist/purejs.js",
-  "typings": "dist/index.d.ts",
+  "main": "purejs.js",
+  "typings": "index.d.ts",
   "engines": {
     "node": ">=16"
   },
@@ -23,9 +23,6 @@
     "build": "run-p build:*",
     "build:node": "tsc",
     "build:webpack": "webpack --mode=production",
-    "clean:node": "rm -rf dist/*",
-    "clean:browser": "rm -rf validator*.js",
-    "clean": "run-p clean:*",
     "dev": "webpack --mode=development",
     "lint": "run-p lint:*",
     "disabled:eslint": "eslint src/index.ts src/lib/*.ts",

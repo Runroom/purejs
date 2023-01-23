@@ -1,4 +1,4 @@
-import purejs from '../dist/purejs.js';
+import purejs from '../purejs.js';
 
 global.purejs = purejs;
 
