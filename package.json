@@ -32,6 +32,7 @@
     "lint:prettier": "prettier --check .github src test .eslintrc.js jest.config.ts webpack.config.babel.js",
     "lint:tsc": "tsc --noEmit --pretty false",
     "pretest": "run-p build:*",
+    "release": "changeset publish",
     "test": "jest"
   },
   "devDependencies": {
@@ -43,6 +44,8 @@
     "@babel/preset-env": "^7.20",
     "@babel/register": "^7.18",
     "@babel/runtime": "^7.20",
+    "@changesets/changelog-github": "^0.4",
+    "@changesets/cli": "^2.26",
     "@types/jest": "^29.2",
     "@types/node": "^18.11",
     "@typescript-eslint/eslint-plugin": "^5.48",
