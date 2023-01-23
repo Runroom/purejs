@@ -14,14 +14,6 @@
     "library",
     "no-jquery"
   ],
-  "files": [
-    "lib",
-    "index.d.ts",
-    "purejs.js",
-    "purejs.js.map",
-    "index.js",
-    "index.js.map"
-  ],
   "main": "purejs.js",
   "typings": "index.d.ts",
   "engines": {
